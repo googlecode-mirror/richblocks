@@ -1,0 +1,106 @@
+/*
+		CSS Framework RIA
+		Jaydson Gomes 
+		Styles das Janelas e Menus
+*/
+
+
+/*     WINDOW    */
+
+.window	{
+
+		position   : absolute;
+		border     : 2px outset #eeeeee;
+		background : #D4D0C8;
+}
+		.title {
+			
+				position      : relative;
+				height   	  : 30px;
+				top       	  : 2px;
+				padding 	  : 5px;
+				margin-bottom : 12px;
+				color         : white;
+				font-weight   : bold;
+				font-size     : 12px;
+				font-family   : Verdana,Geneva,sans-serif;
+		}
+		.bar {
+				
+				height 	   : 25px;
+				cursor 	   : default;
+				background : #4455aa;
+				overflow   : hidden;
+
+		}
+				.bar_options {
+						
+						width		   :20px;
+						vertical-align : top;
+						cursor 		   : default;
+						border :solid 2px;
+				}
+		.content {
+				
+				margin-top  : 7px;
+				margin-left : 6px;
+				border 		: 2px inset #D4D0C8;
+				background  : white;
+				overflow    : auto;
+		}
+		.footer {
+				
+				font-family : Tahoma;
+				font-size   : 11px;
+				margin-left : 8px;
+		}
+	
+	
+/*     MENU    */
+.menu_container {
+				
+				border         : 1px outset #eeeeee;
+				background     : #D4D0C8;
+				vertical-align : top;
+				height         : 29px;
+}
+		.table_menu {
+		
+				position 		: absolute;
+				text-align 		: left;
+				padding         : 0px;
+				border-collapse : collapse;
+				border-spacing  : 0px;
+				cursor 			: default;
+		}
+		.table_coluna_menu {
+		
+				font-family     : Tahoma; 
+				font-size       : 11px;
+				padding         : 7px;
+		}
+		.table_sub_menu {
+				
+				vertical-align : top;
+				visibility     : hidden;
+		}
+		.table_content_sub_menu {
+				
+				border-collapse : collapse;
+				border-spacing  : 0px;
+				border-right 	: 3px outset #eeeeee;
+				border-left 	: 3px outset #eeeeee;
+				font-family 	: Tahoma;
+				font-size 		: 11px; 
+				
+				background 		: #D4D0C8;
+		}
+		.menu_separator{
+			
+				border-bottom   : 2px outset #eeeeee;
+				visibility      : hidden;
+		}
+		
+
+
+
