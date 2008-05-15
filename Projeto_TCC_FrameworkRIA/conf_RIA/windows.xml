@@ -1,122 +1,25 @@
 <?xml version="1.0" ?>
 <WindowInterfaceRia>
-	<window name="option_1_menu_1"
-			description="Janela Teste">
-		<title>
-			Janela Teste 1
-		</title>
-	
-		<bar name="bar1" 
-			 description="Barra da Janela Teste"
-			 minimize="true"
-			 maximize="true"
-			 update="true">
-			 Barra Janela Teste 1
-		</bar>
-		
-		<content name="content_window_teste1"
-				 description="Conteudo da Janela Teste"
-				 src="janela1.php">
-		</content>
-			
-		<footer name="footer_window_teste1">
-			Rodape Janela Teste
-		</footer>
+	<window name="window1" 
+			title="Janela Teste 1"
+			description="Janela Teste 1"
+			defaultTop="10"
+			defaultLeft="10"
+			defaultWidth="800"
+			defaultHeight="800"
+			pageSrc="janela1.php"
+			options="minimize,maximize,close,update"
+			defaultFooter="Rodape Janela Teste">
 	</window>
-
-	<window name="option_2_menu_1"
-			description="Janela Teste2">
-		<title>
-			Janela Teste 2
-		</title>
-		
-		<bar name="bar2" 
-			 description="Barra da Janela Teste"
-			 minimize="true"
-			 maximize="true"
-			 update="true">
-			 Barra Janela Teste 2
-		</bar>
-	
-		<content name="content_window_teste2"
-				 description="Conteudo da Janela Teste"
-				 src="janela2.php">
-		</content>
-		
-		<footer name="footer_window_teste2"> 
-			Rodape Janela Teste 2
-		</footer>
-	</window>
-	
-	<window name="option_3_menu_1"
-			description="Janela Teste3">
-		<title>
-			Janela Teste 3
-		</title>
-		
-		<bar name="bar3" 
-			 description="Barra da Janela Teste"
-			 minimize="true"
-			 maximize="true"
-			 update="true">
-			 Barra Janela Teste 3
-		</bar>
-	
-		<content name="content_window_teste3"
-				 description="Conteudo da Janela Teste"
-				 src="janela3.php">
-		</content>
-		
-		<footer name="footer_window_teste3"> 
-			Rodape Janela Teste 3
-		</footer>
-	</window>
-	
-	<window name="option_1_menu_2"
-			description="Janela Teste4">
-		<title>
-			Janela Teste 4
-		</title>
-		
-		<bar name="bar4" 
-			 description="Barra da Janela Teste"
-			 minimize="true"
-			 maximize="true"
-			 update="true">
-			 Barra Janela Teste 4
-		</bar>
-	
-		<content name="content_window_teste4"
-				 description="Conteudo da Janela Teste"
-				 src="janela4.php">
-		</content>
-		
-		<footer name="footer_window_teste4"> 
-			Rodape Janela Teste 4
-		</footer>
-	</window>
-	
-	<window name="option_2_menu_2"
-			description="Janela Teste5">
-		<title>
-			Janela Teste 5
-		</title>
-		
-		<bar name="bar5" 
-			 description="Barra da Janela Teste"
-			 minimize="true"
-			 maximize="true"
-			 update="true">
-			 Barra Janela Teste 5
-		</bar>
-	
-		<content name="content_window_teste5"
-				 description="Conteudo da Janela Teste"
-				 src="janela5.php">
-		</content>
-		
-		<footer name="footer_window_teste5"> 
-			Rodape Janela Teste 5
-		</footer>
-	</window>
+	<window name="window2" 
+			title="Janela Teste 2"
+			description="Janela Teste 2"
+			defaultTop="10"
+			defaultLeft="10"
+			defaultWidth="800"
+			defaultHeight="800"
+			pageSrc="janela1.php"
+			options="minimize,maximize,close,update"
+			defaultFooter="Rodape Janela Teste">
+	</window>	
 </WindowInterfaceRia>
