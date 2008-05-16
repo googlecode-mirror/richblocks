@@ -46,11 +46,19 @@ if($_POST)
 
 <html>
 <head>
+		<!-- Carrega Styles  -->
+		<link href="styles/default.css" type="text/css" rel="stylesheet">
+
 	<title>
-		* SDK RichBlocks *
+		SDK RichBlocks
 	</title>
 </head>
 <body>
+<div id="div_container"
+	 class="div_container">
+	 
+Menu
+	 
 <form action="index.php" method="post" name="form">
 <?php writeMenu(); ?>
 <input type='submit' 
@@ -62,3 +70,8 @@ if($_POST)
 <?php
 }
 ?>
+</div>
+
+
+
+
