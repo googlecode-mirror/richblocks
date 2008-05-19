@@ -1,37 +1,12 @@
 <?php
 
-function loadXmlFile($xml_dir)
-{
-	if (file_exists($xml_dir)) 
-	{
-		$xml = simplexml_load_file($xml_dir);
-		//$xml->menu['name'] = 'teste';
-		//file_put_contents($xml_dir, $xml->asXML());
-		return $xml;
-	} else {
-		     exit('Failed to open test.xml.');
-	}
-}
-
-function writeMenu()
-{
-	$x = loadXmlFile('../conf_RIA/menu.xml');
-	foreach($x as $el)
-	{
-		echo "<input name='".$el['name']."' type='text' value='".$el['value']."'>";
-	}
-}
-//$xml->addChild('presidente', 'Chapolin');
-// exibindo o novo XML
-//echo $xml->asXML();
-// grava no arquivo paises2.xml
-//file_put_contents('paises2.xml', $xml->asXML());
-
+	include "libs/php/xml.php";
+	
 ?>
 
 <?php 
 
-if($_POST)
+if($s_POST)
 {
 	$xml = loadXmlFile('../conf_RIA/menu.xml');
 	$i=1;
@@ -50,7 +25,7 @@ if($_POST)
 		<link href="styles/default.css" type="text/css" rel="stylesheet">
 
 	<title>
-		SDK RichBlocks
+		RichBlocks SDK
 	</title>
 </head>
 <body>
@@ -58,7 +33,29 @@ if($_POST)
 	 class="div_container">
 	 
 Menu
-	 
+<div id="menu_properties" class="">
+	<table class="menu_properties">
+		<tr>
+			<td>
+				Nome:
+				<input type="text" class="field_properties" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Valor:
+				<input type="text" class="field_properties" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Descri&ccedil;&atilde;o:
+				<input type="text" class="field_properties" />
+			</td>
+		</tr>
+	</table>
+</div>
+<br>
 <form action="index.php" method="post" name="form">
 <?php writeMenu(); ?>
 <input type='submit' 
