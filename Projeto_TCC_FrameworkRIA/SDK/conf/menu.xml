@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <MenuInterfaceRia>
-		<menu name="menu1" value="Arquivo" img="">
-			<option name="option1_menu1" value="Novo Projeto" function="" windowTarget="new_project" img=""></option>
-			<option name="option2_menu1" value="Abrir" windowTarget="open_project"></option>
-			<option name="option3_menu1" value="Salvar" functionTarget="saveProject"></option>
+		<menu name="menu1" value="Arquivo" img="" shortcut="">
+			<option name="option1_menu1" value="Novo Projeto" function="" windowTarget="new_project" img="" shortcut=""></option>
+			<option name="option2_menu1" value="Abrir" windowTarget="open_project" shortcut=""></option>
+			<option name="option3_menu1" value="Salvar" functionTarget="saveProject" shortcut=""></option>
 					<separator value="true"/>
-			<option name="option4_menu1" value="Sair" functionTarget="closeProject"></option>
+			<option name="option4_menu1" value="Sair" functionTarget="closeProject" shortcut=""></option>
 		</menu>
 		
 		<menu name="menu2" value="Configurar">
