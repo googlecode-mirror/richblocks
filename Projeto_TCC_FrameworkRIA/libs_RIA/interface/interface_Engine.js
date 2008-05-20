@@ -123,7 +123,7 @@ function resize(objToResize, direction, event)
 }
 
 function buildMenu(){
-	xmlDoc =loadXmlDocument('../conf_RIA/menu.xml');   // Carrega o arquivo XML com a definição de Menus
+	xmlDoc =loadXmlDocument('../../conf/menu.xml');    // Carrega o arquivo XML com a definição de Menus
 	menu = xmlDoc.getElementsByTagName("menu"); 	   // Variavel menu pega todas as tags <menu> do arquivo XML
 	
 	arrayMenuOptions = new Array();						
