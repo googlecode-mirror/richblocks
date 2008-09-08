@@ -1,0 +1,16 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+RichBlocks é um projeto open source, que tem por objetivo prover uma interface rica, baseada em Rich Internet Applications que possa ser implementada em qualquer tipo de sistema que rode na plataforma web.
+RichBlocks tem todo seu core desenvolvido usando as linguagens Javascript e XML.
+
+
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
