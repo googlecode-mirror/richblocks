@@ -2,8 +2,9 @@
 
 = Introduction =
 
-RichBlocks é um projeto open source, que tem por objetivo prover uma interface rica, baseada em Rich Internet Applications que possa ser implementada em qualquer tipo de sistema que rode na plataforma web.
-RichBlocks tem todo seu core desenvolvido usando as linguagens Javascript e XML.
+RichBlocks é um projeto open source, que tem por objetivo prover uma interface rica,<br>
+baseada em Rich Internet Applications que possa ser implementada em qualquer tipo de<br> sistema que rode na plataforma web.<br>
+RichBlocks tem todo seu núcleo desenvolvido usando as linguagens Javascript e XML.
 
 
 
