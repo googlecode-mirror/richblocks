@@ -17,7 +17,7 @@
 			close="true"
 			drag="true"
 			resize="true"
-			defaultFooter="Rodape Janela Teste">
+			defaultFooter="Rodape da Janela new_client">
 	</window>
 	<window name="edit_client"
 			title="Janela Teste 2"
