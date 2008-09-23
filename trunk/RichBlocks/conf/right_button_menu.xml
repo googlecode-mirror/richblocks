@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<rightButtonMenu>
+		<menu name="menu_1" frameReference="frame_menu">
+			<option name="option1_menu1" value="Fechar todas Janelas Abertas " functionTarget="closeAllWindows()" img="img.png"></option>
+			<option name="option2_menu1" value="Alerta" functionTarget="showAlert" img="img.png"></option>
+			<option name="option3_menu1" value="Salvar" functionTarget="saveProject" img="img.png" separator="true"></option>
+			<option name="option4_menu1" value="Sair" functionTarget="closeProject" img="img.png"></option>
+		</menu>
+		
+		<!--Botão direito no conteudo-->
+		<menu name="menu_3" frameReference="frame_properties">
+			<option name="option1_menu3" value="Alterar plano de fundo" windowTarget="change_background" img="background_image.png"></option>
+			<option name="option2_menu3" value="Formatar" windowTarget="format" img="img.png"></option>
+			<option name="option3_menu3" value="FormatarFotar" windowTarget="format" img="img.png"></option>
+			<option name="option4_menu3" value="Formataatar" windowTarget="format" img="img.png"></option>
+			<option name="option5_menu3" value="Formarmatar" windowTarget="format" img="img.png"></option>
+		</menu>
+</rightButtonMenu>
