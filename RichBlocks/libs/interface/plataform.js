@@ -94,7 +94,7 @@ function buildPlataform(){
 	frameSysTray.style.paddingLeft = '42px';
 	frameSysTray.style.paddingTop = '5px';
 	frameSysTray.style.position = 'absolute';
-	frameSysTray.style.zIndex = '100000';
+	frameSysTray.style.zIndex = '100';
 	frameSysTray.style.fontFamily = 'Tahoma';
 	frameSysTray.style.fontSize = '11px';
 	//frameMinimizeds.appendChild(frameSysTray); 
