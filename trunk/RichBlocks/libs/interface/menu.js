@@ -11,14 +11,12 @@ var rightButtonMenus = new Array();
 ******************************/
 // Menu Superior
 function resetStyleMenus(){
-	for(i=0;i<document.getElementById('frame_menu').getElementsByTagName('div').length;i++)
-	{
+	for(i=0;i<document.getElementById('frame_menu').getElementsByTagName('div').length;i++){
 		outMenu(document.getElementById('frame_menu').getElementsByTagName('div')[i].id);
 	}
 }
 function hiddenMenus(){
-	for(i=0;i<document.getElementById('plataform').getElementsByTagName('TABLE').length;i++)
-	{
+	for(i=0;i<document.getElementById('plataform').getElementsByTagName('TABLE').length;i++){
 		table_id = document.getElementById('plataform').getElementsByTagName('TABLE')[i].id.split('_');
 		if(table_id[0] == 'submenu')
 			document.getElementById('plataform').getElementsByTagName('TABLE')[i].style.display = 'none';
@@ -66,7 +64,7 @@ function verifyPosSubMenu(obj){
 }
 
 function buildMenu(){	
-
+	
 	xmlDoc =loadXmlDocument('conf/menu.xml');    	   // Carrega o arquivo XML com a definição de Menus
 	menu = xmlDoc.getElementsByTagName("menu"); 	   // Variavel menu pega todas as tags <menu> do arquivo XML
 	
@@ -140,7 +138,7 @@ function buildMenu(){
 					trSub.onmouseover = function(){
 						overMenu(document.getElementById(this.getAttribute('menu_reference')).id);
 						if(this.getAttribute('has_sub_menu')=='true'){
-							
+							//Do something
 						}else{
 							return false;
 						}
@@ -149,7 +147,7 @@ function buildMenu(){
 						outMenu(document.getElementById(this.getAttribute('menu_reference')).id);
 					}
 					trSub.onmousedown = function(){
-						//
+						//Do Something
 						if(this.getAttribute('has_sub_menu')=='true'){
 							alert('TRUE');
 						}else{
@@ -185,11 +183,18 @@ function buildMenu(){
 				if(menu[i].getElementsByTagName('option')[iOpt].getAttribute('separator')){
 					trSeparator = document.createElement('TR');
 						tdSeparator = document.createElement('TD');
-						tdSeparator.setAttribute('colspan','3');
+						tdSeparator.setAttribute('colSpan','3');
+						//tdSeparator.colSpan = '3';
 						tdSeparator.style.fontSize = '2px';
-						tdSeparator.style.borderBottom = '1px outset gray';
+						//tdSeparator.style.width = '100%';
+						tdSeparator.style.borderBottom = '1px inset gray';
 					trSeparator.appendChild(tdSeparator);
 					tBodySub.appendChild(trSeparator);
+					div_separator = document.createElement('DIV');
+					div_separator.style.height = '2px';
+					div_separator.style.border = 'solid 1px';
+					
+					
 				}
 				
 				//verifyChildMenu(menu[i].getElementsByTagName('option')[iOpt]);
