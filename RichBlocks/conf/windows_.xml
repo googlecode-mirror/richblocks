@@ -114,7 +114,7 @@
 		minimize="false"
 		maximize="false"
 		close="true"
-		drag="false"
+		drag="true"
 		resize="false"
 		defaultFooter="Sobre RichBlocks">
 	</window>

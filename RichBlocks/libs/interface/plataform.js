@@ -17,6 +17,7 @@ zIndex_blackBackground = 1000000;
 var frameInvisible = document.createElement('DIV');
 var frameProperties = document.createElement('DIV');
 var frameMinimizeds = document.createElement('DIV');
+var frameSysTray = document.createElement('DIV');
 var img_back = document.createElement('IMG');
 
 function buildPlataform(){
@@ -88,20 +89,37 @@ function buildPlataform(){
 	frameMinimizeds.style.fontSize = '11px';
 	frameMinimizeds.style.padding = '2px';
 	
+	frameSysTray.id = 'frame_systray';
+	frameSysTray.style.width = '100px';
+	frameSysTray.style.paddingLeft = '42px';
+	frameSysTray.style.paddingTop = '5px';
+	frameSysTray.style.position = 'absolute';
+	frameSysTray.style.zIndex = '100000';
+	frameSysTray.style.fontFamily = 'Tahoma';
+	frameSysTray.style.fontSize = '11px';
+	//frameMinimizeds.appendChild(frameSysTray); 
+	
 	// Aloca todos elementos na plataforma ( corpo do documento HTML )
-	document.getElementById('plataform').appendChild(frameBarTop);
-	document.getElementById('plataform').appendChild(frameMenu);
-	document.getElementById('plataform').appendChild(frameSubMenu);
-	document.getElementById('plataform').appendChild(frameButtons);
-	document.getElementById('plataform').appendChild(frameProperties);	
-	document.getElementById('plataform').appendChild(frameMinimizeds);	
-	document.getElementById('plataform').appendChild(frameInvisible);	
+	document.body.appendChild(frameSysTray);
+	document.body.appendChild(frameBarTop);
+	document.body.appendChild(frameMenu);
+	document.body.appendChild(frameSubMenu);
+	document.body.appendChild(frameButtons);
+	document.body.appendChild(frameProperties);	
+	document.body.appendChild(frameMinimizeds);	
+	document.body.appendChild(frameInvisible);	
+	
+	//Aloca o framaMinimizeds sempre na posição correta
 	setMinizeds();
+	
+	//Aloca o sysTray na posição correta
+	setSysTrayPosition();
 	
 	// Constroi o menu superior, os menus de botao direito da plataforma e os menus de botão direito de cada janela
 	buildMenu();
 	buildRightButtonMenus();
 	buildWindowRightButtonMenu();
+	clock();
 	
 	// Botao direito
 	document.oncontextmenu = rightButtonMenu;

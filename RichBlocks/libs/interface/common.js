@@ -47,6 +47,12 @@ function setMinizeds(){
 	}
 }
 
+function setSysTrayPosition(){
+	sizeWindow = getSizeWindow();
+	document.getElementById('frame_systray').style.top = parseInt(sizeWindow[1]) - 23 + 'px';
+	document.getElementById('frame_systray').style.left = parseInt(sizeWindow[0]) - 100 + 'px'; // 100 é o tamanho do elemento sysTray
+}
+
 function minimized(objWindow){
 	
 	objWindow.childNodes[0].style.backgroundColor='#BABABA';
@@ -74,7 +80,7 @@ function minimized(objWindow){
 	tempDivMinimized.setAttribute('title',objWindow.title);
 	frameMinimizeds.appendChild(tempDivMinimized);
 	
-	count_size = 0;
+	count_size = 100;
 	var sizeWindow = getSizeWindow();
 	
 	for(i=0;i<frameMinimizeds.childNodes.length;i++){
@@ -215,3 +221,16 @@ function verifyChecked(){
 		}
 	}
 }
+
+function clock(){
+    momentoAtual = new Date();
+    hora = momentoAtual.getHours();
+    minuto = momentoAtual.getMinutes();
+    if(parseInt(minuto) < 10){
+    	minuto = '0' + minuto;
+    }
+    segundo = momentoAtual.getSeconds();;
+    horaImprimivel = hora + " : " + minuto + " : " + segundo;
+    document.getElementById('frame_systray').innerHTML = horaImprimivel;
+    setTimeout("clock()",1000);
+} 

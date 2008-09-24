@@ -184,19 +184,11 @@ function buildMenu(){
 					trSeparator = document.createElement('TR');
 						tdSeparator = document.createElement('TD');
 						tdSeparator.setAttribute('colSpan','3');
-						//tdSeparator.colSpan = '3';
 						tdSeparator.style.fontSize = '2px';
-						//tdSeparator.style.width = '100%';
 						tdSeparator.style.borderBottom = '1px inset gray';
 					trSeparator.appendChild(tdSeparator);
 					tBodySub.appendChild(trSeparator);
-					div_separator = document.createElement('DIV');
-					div_separator.style.height = '2px';
-					div_separator.style.border = 'solid 1px';
-					
-					
 				}
-				
 				//verifyChildMenu(menu[i].getElementsByTagName('option')[iOpt]);
 				if(menu[i].getElementsByTagName('option')[iOpt].getAttribute('hasChild')){
 					pos = verifyPosSubMenu(tdShortcut);
@@ -205,7 +197,6 @@ function buildMenu(){
 			}
 		}
 }
-
 
 function resetRightButtonMenus(){
 	for(i=0;i<document.body.getElementsByTagName('DIV').length;i++)
