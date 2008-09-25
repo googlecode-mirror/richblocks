@@ -68,6 +68,7 @@ function minimized(objWindow){
 	tempDivMinimized.style.paddingLeft = '5px';
 	tempDivMinimized.style.paddingTop = '2px';
 	tempDivMinimized.style.textAlign = 'left';
+	tempDivMinimized.style.cursor = 'default';
 	
 	fullname = objWindow.title;
 	halfname = objWindow.title.substring(0,20) + '...';
@@ -229,7 +230,10 @@ function clock(){
     if(parseInt(minuto) < 10){
     	minuto = '0' + minuto;
     }
-    segundo = momentoAtual.getSeconds();;
+    segundo = momentoAtual.getSeconds();
+    if(parseInt(segundo)<10){
+    	segundo = '0' + segundo;
+    }
     horaImprimivel = hora + " : " + minuto + " : " + segundo;
     document.getElementById('frame_systray').innerHTML = horaImprimivel;
     setTimeout("clock()",1000);
