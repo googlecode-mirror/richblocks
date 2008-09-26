@@ -1,10 +1,17 @@
-/*****************************************************************************
-  buildWindow - Função responsável pelas janelas
-  ***************************************************************************** */
-
 /* GLOBALS */
 zIndexMax = 99;
 
+//Função que Carrega o XML de Janelas
+function loadWindows(){
+	xmlDoc =loadXmlDocument('conf/windows.xml');    	
+	windows = xmlDoc.getElementsByTagName("window"); 	 
+	
+	for(i=0;i<windows.length;i++){
+		xml_windows.push(windows[i]);
+	}
+}	
+
+// Função que constroi a Janela, setando os atributos
 function constructWindow(XMLwindow){	
 	objWindow = new Window(XMLwindow.getAttribute('ajax'),XMLwindow.getAttribute('newInstance'),XMLwindow.getAttribute('forceZindex'));	
 	//alert(XMLwindow.getAttribute('name'));
@@ -33,6 +40,7 @@ function constructWindow(XMLwindow){
 	changeBackgroundWindowBar(theWindow.id);
 }
 
+//Função que recebe o nome e procurra no array de janelas a janela a ser criada
 function buildWindow(nameWindow){
 	error = null;
 	

@@ -13,7 +13,7 @@ var plataform_windows_name = new Array();
 var xml_windows = new Array();
 var window_z_index = 0;
 var window_focus = null;
-zIndex_blackBackground = 1000000;
+var zIndex_blackBackground = 1000000;
 var frameInvisible = document.createElement('DIV');
 var frameProperties = document.createElement('DIV');
 var frameMinimizeds = document.createElement('DIV');
@@ -65,19 +65,13 @@ function buildPlataform(){
 	frameLayout.setAttribute('className','frame_layout');
 	frameLayout.id = 'frame_layout';
 
-	//frameProperties.setAttribute('class','frame_properties');
-	//frameProperties.setAttribute('className','frame_properties');
 	frameProperties.style.width = '100%';
 	frameProperties.style.height = '100%';
-	//frameProperties.style.backgroundImage = 'url(img/back.jpg)';
 		img_back.src = 'img/back.jpg';
 		img_back.style.width = '100%';
 		img_back.style.height = '100%';
 		img_back.id = 'frame_properties';
 	frameProperties.appendChild(img_back);
-
-	//frameProperties.style.background = '#D4D0C8';
-	//frameProperties.style.border = '1px outset #eeeeee';
 	
 	frameMinimizeds.id = 'frame_minimizeds';
 	frameMinimizeds.style.width = '100%';
@@ -97,7 +91,6 @@ function buildPlataform(){
 	frameSysTray.style.zIndex = '100';
 	frameSysTray.style.fontFamily = 'Tahoma';
 	frameSysTray.style.fontSize = '11px';
-	//frameMinimizeds.appendChild(frameSysTray); 
 	
 	// Aloca todos elementos na plataforma ( corpo do documento HTML )
 	document.body.appendChild(frameSysTray);
@@ -119,6 +112,8 @@ function buildPlataform(){
 	buildMenu();
 	buildRightButtonMenus();
 	buildWindowRightButtonMenu();
+	
+	// Relógio
 	clock();
 	
 	// Botao direito
@@ -130,11 +125,10 @@ function buildPlataform(){
 	
 	// Le o arquivo XML e armazena no array GLOBAL xml_windows
 	loadWindows();
-	
 }
 
 
-// MOUSEDOWN
+//MOUSEDOWN
 document.onmousedown = function(event){		
 		if ( !event ){
 		   event = window.event;
@@ -151,8 +145,23 @@ document.onmousedown = function(event){
 		resetRightButtonMenus();
 }
 
+//KEYDOWN
+document.onkeydown = function(event){
+	if ( !event ){
+		   event = window.event;
+	}
+	var key_code = event.keyCode  ? event.keyCode  :
+				   event.charCode ? event.charCode :
+				   event.which    ? event.which    : void 0;
+			   	
+	//Bloqueando F5
+	if(key_code == 116){
+	    cancelEvent(event);
+	}
+	    
+}
 
-// KEYPRESS
+//KEYPRESS
 document.onkeypress = function(event){
 	if ( !event ){
 		   event = window.event;

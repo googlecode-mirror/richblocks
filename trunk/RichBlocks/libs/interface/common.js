@@ -1,13 +1,4 @@
-function loadWindows(){
-	//Carrega o XML de Janelas
-	xmlDoc =loadXmlDocument('conf/windows_.xml');    	
-	windows = xmlDoc.getElementsByTagName("window"); 	 
-	
-	for(i=0;i<windows.length;i++){
-		xml_windows.push(windows[i]);
-	}
-}	
-
+//Função que retorna o tamanho atual da janela do navegador
 function getSizeWindow() {
    var sizeWindow = new Array();
    sizeWindow[0] = 0;  // Width
@@ -29,6 +20,7 @@ function getSizeWindow() {
 return sizeWindow;
 }
 
+//Aloca a barra de janela minmimizadas no local correto
 function setMinizeds(){
 	var sizeWindow = getSizeWindow();
 	count_size = 0;
@@ -47,12 +39,14 @@ function setMinizeds(){
 	}
 }
 
+//Aloca a barra SysTray no local correto
 function setSysTrayPosition(){
 	sizeWindow = getSizeWindow();
 	document.getElementById('frame_systray').style.top = parseInt(sizeWindow[1]) - 23 + 'px';
 	document.getElementById('frame_systray').style.left = parseInt(sizeWindow[0]) - 100 + 'px'; // 100 é o tamanho do elemento sysTray
 }
 
+//Função responsável por fazer o efeito de minimizar a janela
 function minimized(objWindow){
 	
 	objWindow.childNodes[0].style.backgroundColor='#BABABA';
@@ -121,6 +115,7 @@ function minimized(objWindow){
 	objWindow.style.display = 'none';
 }
 
+//Função responsável por fazer o efeito de maximizar a janela
 function maximized(objWindow,objContent,iptMax){
 	if(iptMax.style.backgroundImage == 'url(img/back_button_max_restore.png)'){
 		objWindow.style.top = objWindow.getAttribute('original_top') + 'px';
@@ -143,10 +138,10 @@ function maximized(objWindow,objContent,iptMax){
 	objWindow.style.width = sizeWindow[0];
 	objContent.style.width = parseInt(sizeWindow[0]) - 16 + 'px';
 	objWindow.style.height = parseInt(sizeWindow[1] - 102 + 'px');
-	objContent.style.height = parseInt(sizeWindow[1] - 165 + 'px');
-	
+	objContent.style.height = parseInt(sizeWindow[1] - 165 + 'px');	
 }
 
+//Função responsável aletar a cor da barra da janela quando esta em foco
 function changeBackgroundWindowBar(id){
 	for(i in plataform_windows){
 		if(!id){
@@ -169,6 +164,7 @@ function changeBackgroundWindowBar(id){
 	}
 }
 
+// Função que desbilita a seleção do mouse
 function disableSelection(target){
 	if (typeof target.onselectstart!="undefined") //IE route
 		target.onselectstart=function(){return false}
@@ -176,9 +172,9 @@ function disableSelection(target){
 		target.style.MozUserSelect="none"
 	else //All other route (ie: Opera)
 		target.onmousedown=function(){return false}
-//target.style.cursor = "default"
 }
 
+//Função que carrega uma URL dentro da janela(Parametros: URL,Id da janela, Método:Ajax ou Iframe)
 function loadPage(page,windowContentId,method){
    ajax();
    var url = 'src_application/'+ page;
@@ -207,22 +203,14 @@ function loadPage(page,windowContentId,method){
    xmlhttp.send(url);  
 }
 
+//Função que altera o Plano de Fundo (Parametro: nome da imagem, o diretório é img)
 function changeBackground(imgName){
 	document.getElementById('invisible').style.display = '';
 	document.getElementById('frame_properties').src = 'img/'+imgName+'';
 	document.getElementById('invisible').style.display = 'none';
 }
 
-function verifyChecked(){
-	for(i=0;i<document.getElementsByTagName('input').length;i++){
-		if(document.getElementsByTagName('input')[i].type == 'radio'){
-			if(document.getElementsByTagName('input')[i].checked){
-				top.changeBackground(document.getElementsByTagName('input')[i].id);
-			}
-		}
-	}
-}
-
+// Função responsável por criar o Relógio
 function clock(){
     momentoAtual = new Date();
     hora = momentoAtual.getHours();
@@ -238,3 +226,17 @@ function clock(){
     document.getElementById('frame_systray').innerHTML = horaImprimivel;
     setTimeout("clock()",1000);
 } 
+
+// Função que cancela eventos
+function cancelEvent(event){
+	if (typeof(event.preventDefault)=='function'){
+	        event.preventDefault();
+	    } else {
+	        event.returnValue = false;
+	        event.keyCode = 0;
+	    }
+}
+
+function loadScripts(scriptId){
+	alert(scriptId);
+}
