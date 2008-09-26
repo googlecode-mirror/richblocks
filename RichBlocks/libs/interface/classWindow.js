@@ -256,8 +256,9 @@ function Window(method,new_instance,forceZindex) {
 	}
 	
 	this.resize= function (event){		
-		// Teste para ver se a janela pode ser redimensionada
-		if(objDOM_window.getAttribute('resizable') == 'false'){
+		// Teste para ver se a janela pode ser redimensionada (Firefox reconhece false como String, IE reconhece como false mesmo)
+		isResizable = objDOM_window.getAttribute('resizable');
+		if(isResizable == false || isResizable == 'false'){
 			return false;
 		}else{
 			if(!event){event = window.event;}
@@ -272,7 +273,6 @@ function Window(method,new_instance,forceZindex) {
 			objToResize_ID = objDOM_window.id;
 			objContentToResize_ID = objDOM_Content.id;
 		}
-
 	}
 	
 	this.setWindowDOM = function(event){

@@ -6,15 +6,14 @@
 var activeMenu;
 var rightButtonMenus = new Array();
 
-/*****************************
-	Funções de Menus	
-******************************/
-// Menu Superior
+//Aplica o efeito de onmouseout em todos menus 
 function resetStyleMenus(){
 	for(i=0;i<document.getElementById('frame_menu').getElementsByTagName('div').length;i++){
 		outMenu(document.getElementById('frame_menu').getElementsByTagName('div')[i].id);
 	}
 }
+
+//Esconde os menus
 function hiddenMenus(){
 	for(i=0;i<document.getElementById('plataform').getElementsByTagName('TABLE').length;i++){
 		table_id = document.getElementById('plataform').getElementsByTagName('TABLE')[i].id.split('_');
@@ -22,11 +21,15 @@ function hiddenMenus(){
 			document.getElementById('plataform').getElementsByTagName('TABLE')[i].style.display = 'none';
 	}
 }
+
+//Efeito do onmouseover no menu
 function overMenu(objMenuId){
 	obj = document.getElementById(objMenuId);
 	obj.style.background = '#0A246A';
 	obj.style.color = '#ffffff';
 }
+
+//Efeito do onmouseout no menu
 function outMenu(objMenuId){
 	obj = document.getElementById(objMenuId);
 	obj.style.background = '#D4D0C8';
@@ -63,6 +66,7 @@ function verifyPosSubMenu(obj){
 	return [y,x];
 }
 
+//Constroi os menus da parte superior
 function buildMenu(){	
 	
 	xmlDoc =loadXmlDocument('conf/menu.xml');    	   // Carrega o arquivo XML com a definição de Menus
@@ -198,6 +202,7 @@ function buildMenu(){
 		}
 }
 
+// Remove o elemento botão direito da plataforma
 function resetRightButtonMenus(){
 	for(i=0;i<document.body.getElementsByTagName('DIV').length;i++)
 	{
@@ -209,6 +214,7 @@ function resetRightButtonMenus(){
 	}
 }
 
+//Aloca o botão direito conforme a posição clicado na janela
 function windowRightButtonMenu(){
 	//hiddenMenus();
 	if ( !event ){event = window.event;}	
@@ -229,6 +235,7 @@ function windowRightButtonMenu(){
 	}
 }
 
+//Aloca o botão direito conforme a posição clicada na plataforma
 function rightButtonMenu(event){
 	hiddenMenus();
 	if ( !event ){event = window.event;}	
@@ -248,6 +255,7 @@ function rightButtonMenu(event){
 	}
 }
 
+//Constroi os menus de botão direito
 function buildRightButtonMenus(){
 
 	xmlDoc =loadXmlDocument('conf/right_button_menu.xml');    	    // Carrega o arquivo XML com a definição de Menus do botao direito
@@ -306,6 +314,7 @@ function buildRightButtonMenus(){
 	}
 }
 
+// Constroi os menus de botão direito de cada janela
 function buildWindowRightButtonMenu(){
 	xmlDoc =loadXmlDocument('conf/window_right_button_menu.xml');   // Carrega o arquivo XML com a definição de Menus do botao direito
 	menu = xmlDoc.getElementsByTagName("menu"); 	   				// Variavel menu pega todas as tags <menu> do arquivo XML
