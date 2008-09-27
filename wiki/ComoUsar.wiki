@@ -10,7 +10,7 @@ Menus e Janelas são definidos em arquivos XML.
 
 O sistema possui menus que ficam no topo, e menus de botão direito.
 Os arquivos ficam no diretório conf.
-Exemplo de confuguração de menu que fica no topo:
+Abaixo um exemplo de confuguração de menu que fica no topo:
 {{{
 <menu name="menu_0" value="Clientes" img="img.png" shortcut="Ctrl+C">
       <option name="option1_menu0" value="Cadastrar" windowTarget="new_client" img="img.png" shortcut="Ctrl+C" hasChild="true">
