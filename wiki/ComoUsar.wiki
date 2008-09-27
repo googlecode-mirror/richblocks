@@ -7,6 +7,7 @@ Para integrar a interface ao seu sistema, faça um mapeamento de quais opções 
 Menus e Janelas são definidos em arquivos XML.
 
 *Menus:*
+
 O sistema possui menus que ficam no topo, e menus de botão direito.
 Os arquivos ficam no diretório conf.
 Exemplo de confuguração de menu que fica no topo:
