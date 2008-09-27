@@ -1,10 +1,32 @@
-#summary One-sentence summary of this page.
 #labels Phase-Deploy
+#Como Usar?
 
-= Introduction =
+= Configurando os arquivos XML =
 
-Add your content here.
+Para integrar a interface ao seu sistema, faça um mapeamento de quais opções de menu ele vai ter, e quais janelas esse menu vai abrir.
+Menus e Janelas são definidos em arquivos XML.
 
+*Menus:*
+O sistema possui menus que ficam no topo, e menus de botão direito.
+Os arquivos ficam no diretório conf.
+Exemplo de confuguração de menu que fica no topo:
+{{{
+<menu name="menu_0" value="Clientes" img="img.png" shortcut="Ctrl+C">
+      <option name="option1_menu0" value="Cadastrar" windowTarget="new_client" img="img.png" shortcut="Ctrl+C" hasChild="true">
+	      <sub>
+		   <sub_option name="sub_option1_menu0" value="teste1" windowTarget="teste1" functionTarget="" img="img.png" shortcut="Ctrl+N"></sub_option>
+		   <sub_option name="sub_option2_menu0" value="teste2" windowTarget="teste2" functionTarget="" img="img.png" shortcut="Ctrl+N"></sub_option>
+	      </sub>
+      </option>
+      <option name="option2_menu0" value="Editar" windowTarget="edit_client" img="img.png" shortcut="Ctrl+N">
+    </option>
+     <option name="option3_menu0" value="Excluir" functionTarget="" img="img.png" shortcut="Ctrl+N" separator="true">
+     </option>
+     <option name="option4_menu0" value="Pesquisar" img="img.png">
+     </option>
+</menu>
+
+}}}
 
 = Details =
 
