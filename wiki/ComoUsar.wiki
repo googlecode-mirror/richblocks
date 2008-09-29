@@ -50,6 +50,7 @@ Abaixo na tabela 2 segue a lista de atributos que uma janela pode possuir.
 || description || Especifica uma descrição para a janela, necessário apenas para fins de documentação || 
 || defaultTop || Especifica a posição top da janela ta tela. ||
 || defaultLeft || Especifica a posição left da janela ta tela. ||
+|| defaultWidth || Especifica a largura da janela. ||
 || defaultHeight || Especifica a altura da janela. ||
 || pageSrc || Especifica qual URL deve ser carregada no corpo da janela. ||
 || ajax || Espicifica se o conteúdo deve ser carregado via ajax, se for false, será carregado em um Iframe ||
