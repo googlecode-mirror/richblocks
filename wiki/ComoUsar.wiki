@@ -40,7 +40,7 @@ Abaixo um exemplo de configuração de menu que fica no topo:
 
 }}}
 
-== Janelas ==
+== Janelas: ==
 Todas as Janelas do Sistema são definidas no arquivo _windows.xml_, que está nodiretório /conf.
 Abaixo na tabela 2 segue a lista de atributos que uma janela pode possuir.
 *Tabela 2*
