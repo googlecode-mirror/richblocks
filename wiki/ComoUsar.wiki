@@ -40,8 +40,22 @@ Abaixo um exemplo de configuração de menu que fica no topo:
 
 }}}
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
+== Janelas ==
+Todas as Janelas do Sistema são definidas no arquivo _windows.xml_, que está nodiretório /conf.
+Abaixo na tabela 2 segue a lista de atributos que uma janela pode possuir.
+*Tabela 2*
+|| *ATRIBUTOS* || *DESCRIÇÃO* ||
+|| name || Especifica o nome da janela, este é necessário para criar uma referência no sistema para poder ser chamado por algum menu ou função.||
+|| title || Especifica o titulo da janela, será mostrado na parte superior da janela.||
+|| description || Especifica uma descrição para a janela, necessário apenas para fins de documentação || 
+|| defaultTop || Especifica a posição top da janela ta tela. ||
+|| defaultLeft || Especifica a posição left da janela ta tela. ||
+|| defaultHeight || Especifica a altura da janela. ||
+|| pageSrc || Especifica qual URL deve ser carregada no corpo da janela. ||
+|| ajax || Espicifica se o conteúdo deve ser carregado via ajax, se for false, será carregado em um Iframe ||
+|| newInstance || Especifica se a janela pode ser aberta mais de uma vez ||
+|| minimize || Especifica se a janela pode ser minimizada ||
+|| maximize || Especifica se a janela pode ser maximizada||
+|| close || Especifica se a janela pode ser fechada ||
+|| drag || Especifica se a janela pode ser arrastada ||
+|| resize || Especifica se a janela pode ser redimensionada ||
