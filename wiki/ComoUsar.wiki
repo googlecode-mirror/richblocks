@@ -1,15 +1,15 @@
 #labels Phase-Deploy
-#Como Usar?
-
 = Configurando os arquivos XML =
 
-Para integrar a interface ao seu sistema, faça um mapeamento de quais opções de menu ele vai ter, e quais janelas esse menu vai abrir.
 Menus e Janelas são definidos em arquivos XML.
+Para integrar a interface ao seu sistema, faça um mapeamento de quais opções de menu ele vai ter, e quais janelas essas opções irão abrir.
 
 *Menus:*
 
 O sistema possui menus que ficam no topo, e menus de botão direito.
-Os arquivos ficam no diretório conf.
+Estes arquivos ficam no diretório /conf.
+São eles: _menu.xml_ e _right_button_menu.xml_
+
 Abaixo um exemplo de confuguração de menu que fica no topo:
 {{{
 <menu name="menu_0" value="Clientes" img="img.png" shortcut="Ctrl+C">
