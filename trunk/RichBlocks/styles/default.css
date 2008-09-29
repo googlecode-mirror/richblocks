@@ -124,6 +124,8 @@ td {
 	z-index:10000000;
 	cursor:default;	
 	display :none;
+	-moz-opacity:0.0; 
+	filter: alpha(opacity=0);
 }
 .text_sub_menu{
 	height:22px;
