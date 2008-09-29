@@ -18,7 +18,7 @@ function hiddenMenus(){
 	for(i=0;i<document.getElementById('plataform').getElementsByTagName('TABLE').length;i++){
 		table_id = document.getElementById('plataform').getElementsByTagName('TABLE')[i].id.split('_');
 		if(table_id[0] == 'submenu')
-			document.getElementById('plataform').getElementsByTagName('TABLE')[i].style.display = 'none';
+			document.body.getElementsByTagName('TABLE')[i].style.display = 'none';
 	}
 }
 
@@ -78,28 +78,42 @@ function buildMenu(){
 		for(i=0;i<menu.length;i++)
 		{
 			divMenu = document.createElement('DIV');
-			divMenu.setAttribute('class','menu_design');
-			divMenu.setAttribute('className','menu_design');
+			divMenu.style.padding = '4px';
+			divMenu.style.cursor = 'default';
+			divMenu.style.cssFloat = 'left';
+			divMenu.style.styleFloat = 'left';
+			divMenu.style.fontFamily = 'tahoma';
+			divMenu.style.fontSize = '11px';
 			divMenu.id = menu[i].getAttribute('name');
 			divMenu.innerHTML = menu[i].getAttribute('value');
 			divMenu.onclick = function(){
+				//Esconde o menu que estievr aberto
 				resetRightButtonMenus();
+				
+				//Mostra o menu
 				document.getElementById(this.getAttribute('childSubMenu')).style.display = 'block';
+				opacity(this.getAttribute('childSubMenu'), 0, 100, 200);
+				
+				//Essa variavel controla o menu que estão aparecendo
 				activeMenu = true;
 			}	
 			divMenu.onmouseover = function(){
+				//Reseta o estilo dos menus
 				resetStyleMenus();	
 				if(activeMenu){
 					hiddenMenus();
 					document.getElementById(this.getAttribute('childSubMenu')).style.display = 'block';
+					opacity(this.getAttribute('childSubMenu'), 0, 100, 200);
 				}
-					
 				overMenu(this.id);
 			}
 			divMenu.onmouseout = function(){
 				if(activeMenu)
 					return false;
-				outMenu(this.id);
+				//outMenu(this.id);
+				opacity(this.getAttribute('childSubMenu'), 100, 0, 200);
+				document.getElementById(this.getAttribute('childSubMenu').style.MozOpacity = '0.0');
+				document.getElementById(this.getAttribute('childSubMenu').style.filter = 'alpha(opacity=0');
 			}
 			document.getElementById('frame_menu').appendChild(divMenu);
 			
@@ -174,7 +188,7 @@ function buildMenu(){
 						trSub.setAttribute('has_sub_menu','true');
 						space_sub_menu = document.createElement('TD');
 						space_sub_menu.style.border = 'solid 1px';
-						space_sub_menu.innerHTML = '';
+						//space_sub_menu.innerHTML = 'sadsadsa';
 						//trSub.appendChild(space_sub_menu);
 				}
 				

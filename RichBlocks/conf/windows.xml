@@ -38,13 +38,14 @@
 			resize="true"
 			defaultFooter="Rodape Janela Teste">
 	</window>	
+	
 	<window name="change_background"
 			title="Alterar Plano de Fundo"
 			description="Janela para alteração do plano de fundo"
 			defaultTop="100"
 			defaultLeft="300"
 			defaultWidth="300"
-			defaultHeight="550"
+			defaultHeight="400"
 			minWidth="120"
 			minHeight="120" 
 			pageSrc="change_background_image.html"
@@ -52,12 +53,13 @@
 			newInstance="false"
 			forceZindex="true"
 			minimize="true"
-			maximize="true"
+			maximize="false"
 			close="true"
 			drag="true"
 			resize="true"
 			defaultFooter="Alterando Plano de Fundo">
 	</window>	
+	
 	<window name="google"
 			title="Google"
 			description="Google"
@@ -78,6 +80,7 @@
 			resize="true"
 			defaultFooter="Google">
 	</window>	
+	
 	<window name="help"
 		title="Ajuda RichBlocks"
 		description="Ajuda do RichBlocks"
@@ -98,6 +101,7 @@
 		resize="false"
 		defaultFooter="Ajuda">
 	</window>
+	
 	<window name="sobre"
 		title="Sobre o RichBlocks"
 		description="Sobre o RichBlocks"

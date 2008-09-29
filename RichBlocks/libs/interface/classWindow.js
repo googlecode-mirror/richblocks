@@ -21,9 +21,10 @@ function Window(method,new_instance,forceZindex) {
 	var objDOM_window;
 	var objDOM_Content;
 	var objDOM_windowBar;
-	var objDOM_windowButtons = new Array;
+	//var objDOM_windowButtons = new Array;
 	var drag;
 	var resizable;
+	var maximizable;
 	
 	// Constructor
 	var construct = function(){
@@ -92,7 +93,6 @@ function Window(method,new_instance,forceZindex) {
 			objDOM_windowBar.appendChild(tableWindowBar);
 			
 			// Elemeto DIV Conteudo da Janela, se method for = TRUE entao o metodo de carregamento é AJAX, senão carrega em um IFRAME
-			
 			if(method == 'true')
 				objDOM_Content = document.createElement('DIV');
 			else
@@ -157,9 +157,14 @@ function Window(method,new_instance,forceZindex) {
 	this.setResizable = function(p){
 		resizable = p;
 	}
-	
 	this.getResizable = function(){
 		return resizable;
+	}
+	this.setMaximizable = function(p){
+		maximizable = p;
+	}
+	this.getMaximizable = function(){
+		return maximizable;
 	}
 	
 	this.setIdBar = function(){
@@ -248,13 +253,17 @@ function Window(method,new_instance,forceZindex) {
 		return fz;
 	}
 	
+	//Seta o Z-index da janela
 	this.setZindex = function(z){
 		z_index = z;
 	}
+	
+	//Retorna o Z-index da janela
 	this.getZindex = function(){
 		return z_index;
 	}
 	
+	//Método que redimensiona a janela
 	this.resize= function (event){		
 		// Teste para ver se a janela pode ser redimensionada (Firefox reconhece false como String, IE reconhece como false mesmo)
 		isResizable = objDOM_window.getAttribute('resizable');
@@ -275,6 +284,7 @@ function Window(method,new_instance,forceZindex) {
 		}
 	}
 	
+	//Seta as propriedades DOM do Objeto
 	this.setWindowDOM = function(event){
 		if(!event){
 			event = window.event;
@@ -312,15 +322,19 @@ function Window(method,new_instance,forceZindex) {
 		}
 	}
 	
+	//Minimiza
 	this.minimize = function (objWindow){
 		minimized(objWindow);
 	}
+	
+	//Maximiza
 	this.maximize = function(objWindow,objContent,iptMax){
 		if(maximized(objWindow,objContent,iptMax)){
 			return true;
 		}
 	}
 	
+	//Seta as propriedades do Objeto
 	this.setProperties = function(XMLname,title,description,top,left,width,height,pageSrc,footer,new_instance,forceZindex){
 		this.setXMLname(XMLname);
 		this.setTitle(title);
@@ -378,7 +392,10 @@ function Window(method,new_instance,forceZindex) {
 		}
 		
 		objDOM_windowBar.ondblclick = function(){
-			
+			//Se a janela tiver sido setada com não maximizar, entao retorna falso
+			if(objDOM_window.getAttribute('maximizable')== false || objDOM_window.getAttribute('maximizable')== 'false'){
+				return false;
+			}
 			if(max(objDOM_window,objDOM_Content,iptMax)){
 				iptMax.style.backgroundImage = 'url(img/back_button_max.png)';
 				return true;
@@ -394,6 +411,7 @@ function Window(method,new_instance,forceZindex) {
 		}	
 	}
 	
+	//Adiciona Drag-n-Drop(Aqui é feito o teste para ver se a janela é dragavel ou não)
 	this.setDragable = function (idDrag,idObjDrag){
 		if(this.getDrag() == false){
 			return false;
@@ -402,6 +420,7 @@ function Window(method,new_instance,forceZindex) {
 		}
 	}
 	
+	//Ações da janela, aqui testa se pode maximizar,minimizar,arrastar,redimensionar
 	this.setActions = function(min,max,close,drag,resize){
 		if(!min)
 		{	
@@ -410,6 +429,8 @@ function Window(method,new_instance,forceZindex) {
 		if(!max)
 		{
 			divButtons.removeChild(iptMax);
+			this.setMaximizable(max);
+			objDOM_window.setAttribute('maximizable',eval(max));
 		}
 		if(!close)
 		{	
@@ -428,6 +449,7 @@ function Window(method,new_instance,forceZindex) {
 		}
 	}
 	
+	//Constroi a Janela
 	this.build = function(){
 		this.setId();
 		this.setIdBar();

@@ -1,10 +1,3 @@
-/******************************************************************************
-buildPlataform - Função que cria a base onde o SDK funciona
-frameMenu : Canada da interface onde os menus se alocam
-frameSubMenu : Camada da interface onde os submenus serão alocados
-frameLayout : Camada da interface onde são tratados os efeitos CSS
-********************************************************************************/
-
 /* GLOBALS */
 var tabs = new Array();
 var frameMinimizeds;
