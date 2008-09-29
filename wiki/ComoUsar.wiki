@@ -21,7 +21,7 @@ Abaixo na tabela 1 segue a lista de atributos que um menu pode possuir.
 || shortcut || Especifica qual a combinação de teclas servirá como atalho para executar este Menu||
 
 
-Abaixo um exemplo de confuguração de menu que fica no topo:
+Abaixo um exemplo de configuração de menu que fica no topo:
 {{{
 <menu name="menu_0" value="Clientes" img="img.png" shortcut="Ctrl+C">
       <option name="option1_menu0" value="Cadastrar" windowTarget="new_client" img="img.png" shortcut="Ctrl+C" hasChild="true">
