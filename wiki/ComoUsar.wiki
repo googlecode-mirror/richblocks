@@ -11,7 +11,7 @@ Estes arquivos ficam no diretório /conf.
 São eles: _menu.xml_ e _right_button_menu.xml_.
 Abaixo na tabela 1 segue a lista de atributos que o menu possui.
 || *ATRIBUTOS* || *DESCRIÇÃO* ||
-|| name || Especifica o nome do menu, este é necessário para criar uma referência no sistema
+|| name || Especifica o nome do menu, este é necessário para criar uma referência no sistema ||
 || value || Especifica o que será exibido como oção no sistema ||
 || function || Especifica qual função deve ser executada ao ser clicado. A função é definida por um nome único que foi especificado no arquivo functions.xml ||
 || windowTarget || Especifica qual janela deve ser aberta pelo sistema quando clicado. A janela é definida por um nome único definido no arquivo windows.xml ||
