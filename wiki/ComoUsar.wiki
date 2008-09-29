@@ -60,3 +60,9 @@ Abaixo na tabela 2 segue a lista de atributos que uma janela pode possuir.
 || close || Especifica se a janela pode ser fechada ||
 || drag || Especifica se a janela pode ser arrastada ||
 || resize || Especifica se a janela pode ser redimensionada ||
+
+Abaixo um exemplo de código de uma janela:
+{{{
+<window name="new_client" title="teste" description="Janela Teste 1" defaultTop="150" defaultLeft="150" defaultWidth="500" defaultHeight="400" minWidth="120" minHeight="120" pageSrc="janela1.php" ajax="true" newInstance="true" minimize="true" maximize="true" close="true" drag="true" resize="true" defaultFooter="Rodape da Janela new_client" /> 
+
+}}}
