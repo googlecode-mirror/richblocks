@@ -104,3 +104,8 @@ Abaixo um exemplo de código de uma janela:
         defaultFooter="Rodape da Janela new_client" /> 
 
 }}}
+
+A Figura 2 abaixo ilustra uma janela gerada pelo Javascript.
+
+*Figura 2*
+http://jaydson.springerit.com/img/window.jpg
