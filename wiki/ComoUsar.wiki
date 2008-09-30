@@ -43,7 +43,7 @@ Abaixo um exemplo de configuração de menu que fica no topo:
               img="img.png" 
               shortcut="Ctrl+N">
       </option>
-      <option name="option2_menu0" 
+      <option name="option4_menu0" 
               value="Sair" 
               windowTarget="sair" 
               img="img.png" 
