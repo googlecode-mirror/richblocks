@@ -43,7 +43,7 @@ function setMinizeds(){
 function setSysTrayPosition(){
 	sizeWindow = getSizeWindow();
 	document.getElementById('frame_systray').style.top = parseInt(sizeWindow[1]) - 23 + 'px';
-	document.getElementById('frame_systray').style.left = parseInt(sizeWindow[0]) - 100 + 'px'; // 100 é o tamanho do elemento sysTray
+	document.getElementById('frame_systray').style.left = parseInt(sizeWindow[0]) - 78 + 'px'; // 100 é o tamanho do elemento sysTray
 }
 
 //Função responsável por fazer o efeito de minimizar a janela
@@ -218,11 +218,7 @@ function clock(){
     if(parseInt(minuto) < 10){
     	minuto = '0' + minuto;
     }
-    segundo = momentoAtual.getSeconds();
-    if(parseInt(segundo)<10){
-    	segundo = '0' + segundo;
-    }
-    horaImprimivel = hora + " : " + minuto + " : " + segundo;
+    horaImprimivel = hora + ":" + minuto;
     document.getElementById('frame_systray').innerHTML = horaImprimivel;
     setTimeout("clock()",1000);
 } 
@@ -238,34 +234,3 @@ function cancelEvent(event){
 }
 
 
-
-function fadeOut(id, time) {
-	target = document.getElementById(id);
-	alpha = 100;
-	timer = (time*1000)/50;
-	var i = setInterval(
-			function() {
-				if (alpha <= 0)
-					clearInterval(i);
-				setAlpha(target, alpha);
-				alpha -= 2;
-			}, timer);
-}
-
-function fadeIn(id, time) {
-	target = document.getElementById(id);
-	alpha = 0;
-	timer = (time*1000)/50;
-	var i = setInterval(
-			function() {
-				if (alpha >= 100)
-					clearInterval(i);
-				setAlpha(target, alpha);
-				alpha += 2;
-			}, timer);
-}
-
-function setAlpha(target, alpha) {
-	target.style.filter = "alpha(opacity="+ alpha +")";
-	target.style.opacity = alpha/100;
-}
