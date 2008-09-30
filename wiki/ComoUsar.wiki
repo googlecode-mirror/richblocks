@@ -23,19 +23,15 @@ Abaixo na tabela 1 segue a lista de atributos que um menu pode possuir.
 
 Abaixo um exemplo de configuração de menu que fica no topo:
 {{{
-<menu name="menu_0" value="Clientes" img="img.png" shortcut="Ctrl+C">
-      <option name="option1_menu0" value="Cadastrar" windowTarget="new_client" img="img.png" shortcut="Ctrl+C" hasChild="true">
+<menu name="menu_0" value="Arquivo" img="img.png" shortcut="Ctrl+C">
+      <option name="option1_menu0" value="Novo Projeto" windowTarget="new_client" img="img.png" shortcut="Ctrl+C" hasChild="true">
 	      <sub>
-		   <sub_option name="sub_option1_menu0" value="teste1" windowTarget="teste1" functionTarget="" img="img.png" shortcut="Ctrl+N"></sub_option>
-		   <sub_option name="sub_option2_menu0" value="teste2" windowTarget="teste2" functionTarget="" img="img.png" shortcut="Ctrl+N"></sub_option>
+		   <sub_option name="sub_option1_menu0" value="Abrir" windowTarget="teste1" functionTarget="" img="img.png" shortcut="Ctrl+N"></sub_option>
+		   <sub_option name="sub_option2_menu0" value="Salvar" windowTarget="teste2" functionTarget="" img="img.png" shortcut="Ctrl+N"></sub_option>
 	      </sub>
       </option>
-      <option name="option2_menu0" value="Editar" windowTarget="edit_client" img="img.png" shortcut="Ctrl+N">
+      <option name="option2_menu0" value="Sair" windowTarget="edit_client" img="img.png"           shortcut="Ctrl+N">
     </option>
-     <option name="option3_menu0" value="Excluir" functionTarget="" img="img.png" shortcut="Ctrl+N" separator="true">
-     </option>
-     <option name="option4_menu0" value="Pesquisar" img="img.png">
-     </option>
 </menu>
 
 }}}
