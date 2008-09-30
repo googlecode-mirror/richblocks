@@ -372,6 +372,7 @@ function Window(method,new_instance,forceZindex) {
 			window_focus = null;
 			
 			// Remove o elemento
+			//opacity(objDOM_window.id, 100, 0, 350);
 			document.body.removeChild(objDOM_window);
 			
 			//Laço que percorre todas as janelas abertas e deleta do array que a armazena

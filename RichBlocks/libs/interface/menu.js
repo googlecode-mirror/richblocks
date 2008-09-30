@@ -1,7 +1,3 @@
-/*****************************************************************************
-  buildMenu - Função responsável pelo menu
-***************************************************************************** */
-
 /* GLOBALS */
 var activeMenu;
 var rightButtonMenus = new Array();
@@ -91,8 +87,8 @@ function buildMenu(){
 				resetRightButtonMenus();
 				
 				//Mostra o menu
+				opacity(this.getAttribute('childSubMenu'), 0, 100, 350);
 				document.getElementById(this.getAttribute('childSubMenu')).style.display = 'block';
-				opacity(this.getAttribute('childSubMenu'), 0, 100, 200);
 				
 				//Essa variavel controla o menu que estão aparecendo
 				activeMenu = true;
@@ -103,7 +99,7 @@ function buildMenu(){
 				if(activeMenu){
 					hiddenMenus();
 					document.getElementById(this.getAttribute('childSubMenu')).style.display = 'block';
-					opacity(this.getAttribute('childSubMenu'), 0, 100, 200);
+					opacity(this.getAttribute('childSubMenu'), 0, 100, 350);
 				}
 				overMenu(this.id);
 			}
@@ -111,7 +107,7 @@ function buildMenu(){
 				if(activeMenu)
 					return false;
 				//outMenu(this.id);
-				opacity(this.getAttribute('childSubMenu'), 100, 0, 200);
+				opacity(this.getAttribute('childSubMenu'), 100, 0, 350);
 				document.getElementById(this.getAttribute('childSubMenu').style.MozOpacity = '0.0');
 				document.getElementById(this.getAttribute('childSubMenu').style.filter = 'alpha(opacity=0');
 			}
@@ -156,7 +152,7 @@ function buildMenu(){
 					trSub.onmouseover = function(){
 						overMenu(document.getElementById(this.getAttribute('menu_reference')).id);
 						if(this.getAttribute('has_sub_menu')=='true'){
-							//Do something
+							// TO DO
 						}else{
 							return false;
 						}
@@ -187,9 +183,15 @@ function buildMenu(){
 						tdShortcut.style.backgroundPosition = 'center';
 						trSub.setAttribute('has_sub_menu','true');
 						space_sub_menu = document.createElement('TD');
-						space_sub_menu.style.border = 'solid 1px';
-						//space_sub_menu.innerHTML = 'sadsadsa';
-						//trSub.appendChild(space_sub_menu);
+						//space_sub_menu.style.border = 'solid 1px';
+						//space_sub_menu.style.fontSize = '1px';
+						space_sub_menu.innerHTML = '';
+						trSub.setAttribute('rowSpan','10');
+						trSub.appendChild(space_sub_menu);
+						
+						divTempSubMenu = document.createElement('DIV');
+						space_sub_menu.appendChild(divTempSubMenu);
+						alert(divTempSubMenu.style.top);
 				}
 				
 				//Calculo para colocar borda apenas no ultimo elemento 
