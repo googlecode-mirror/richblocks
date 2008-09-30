@@ -39,6 +39,8 @@ Abaixo um exemplo de configuração de menu que fica no topo:
 </menu>
 
 }}}
+http://jaydson.springerit.com/img/menu.jpg
+
 
 == Janelas: ==
 Todas as Janelas do Sistema são definidas no arquivo _windows.xml_, que está nodiretório /conf.
