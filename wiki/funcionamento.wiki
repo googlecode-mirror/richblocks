@@ -1,7 +1,7 @@
 #summary One-sentence summary of this page.
 
 = Introduction =
-http://jaydson.springerit.com/img/plug.jpg
+http://jaydson.springerit.com/img/plugin.jpg
 
 
 = Details =
