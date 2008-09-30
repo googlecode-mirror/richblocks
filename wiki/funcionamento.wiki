@@ -12,4 +12,11 @@ O Framework possui uma estrutura que é composta por uma série de arquivos XML 
 *Figura 2*
 http://jaydson.springerit.com/img/funcionamento.jpg
 
-= Details =
+Para definir menus, sub-menus, janelas, funções e chamadas se faz necessário o conhecimento em Javascript e XML, pois todas as configurações ficam armazenadas em arquivos XML e todas as funções nativas foram feitas em Javascript, então logicamente alguma função que seja criada deverá ser implementada em Javascript.
+Primeiramente, o desenvolvedor terá que mapear o sistema em que a interface será implantada, isto é, determinar quais as opções de menu serão exibidas, quais janelas o sistema vai ter, e quais funções este sistema irá executar. 	Depois de mapeado, os arquivos XML devem ser populados para determinar quais menus serão necessários, quais janelas estes menus irão abrir, ou quais funções o menu irá executar, e também definir as janelas e seus atributos e as funções Javascript que poderão ser executadas. 
+Existem duas abordagens de como o Framework poderá ser usado: 
+Projeto inicial:
+ Nesta abordagem inicia-se o desenvolvimento de um sistema usando a estrutura 
+do Framework como base para criação da interface gráfica. Nesta fase, é necessário adequar a estrutura do Framework ao processo de desenvolvimento adotado pela equipe responsável.
+Projeto existente:
+ Nesta, existe um sistema web que não utiliza metodologia RIA, ou seja, funciona da maneira tradicional de navegação em um browser, então o Framework se encarregará de adequar este sistema a uma nova interface.
