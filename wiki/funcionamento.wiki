@@ -1,12 +1,15 @@
-#summary One-sentence summary of this page.
+= Funcionamento =
+O Framework é como um plug-in de uma Interface para um sistema web. A figura 1        ilustra o que isso quer dizer.
 
-= Introduction =
+*Figura 1*
 http://jaydson.springerit.com/img/plugin.jpg
 
+O Framework baseia-se na idéia de menus, funções e janelas. Um elemento menu  pode possuir vários elementos sub-menus e cada elemento sub-menu, além de poder possuir vários outros elementos sub-menus, faz uma chamada que é responsável por abrir uma janela ou por executar alguma função Javascript já nativa no Framework, ou escrita pelo desenvolvedor, isto quer dizer que quem estiver implantando a interface poderá usar funções já existentes no Framework e também poderá customizar a interface de acordo com a necessidade do sistema em que a interface estiver sendo implantada.
+	Os elementos janela possuem uma série de atributos ,estes definem todas as funcionalidades da janela, como título, posição na tela, dimensões, pagina que será carregada no seu corpo e ainda algumas opções booleanas, como maximizar, minimizar, fechar e atualizar que permitem que seja possível criar uma janela definindo quais propriedades ela no terá quando exibida.
+ 	Funções são definidas da maneira tradicional de definições de funções Javascript, porém estas ficam armazenadas em um arquivo XML, e só é executada quando chamada por alguma opção de menu.
+O Framework possui uma estrutura que é composta por uma série de arquivos XML que são a base de configuração de como o sistema deve funcionar, e bibliotecas Javascript que são o núcleo do Framework, ou seja, são estas bibliotecas que provem toda a funcionalidade RIA para o sistema. A figura 2 ilustra o funcionamento do Framework.
+
+*Figura 2*
+http://jaydson.springerit.com/img/funcionamento.jpg
 
 = Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
