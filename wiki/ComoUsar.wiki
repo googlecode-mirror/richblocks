@@ -39,6 +39,9 @@ Abaixo um exemplo de configuração de menu que fica no topo:
 </menu>
 
 }}}
+A Figura 1 abaixo ilustra o menu gerado pelo Javascript.
+
+*Figura 1*
 http://jaydson.springerit.com/img/menu.jpg
 
 
