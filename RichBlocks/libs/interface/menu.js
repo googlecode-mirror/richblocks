@@ -191,7 +191,6 @@ function buildMenu(){
 						
 						divTempSubMenu = document.createElement('DIV');
 						space_sub_menu.appendChild(divTempSubMenu);
-						alert(divTempSubMenu.style.top);
 				}
 				
 				//Calculo para colocar borda apenas no ultimo elemento 
