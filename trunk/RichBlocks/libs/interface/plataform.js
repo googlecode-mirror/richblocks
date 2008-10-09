@@ -13,6 +13,7 @@ var frameMinimizeds = document.createElement('DIV');
 var frameSysTray = document.createElement('DIV');
 var img_back = document.createElement('IMG');
 
+
 function buildPlataform(){
 	
 	//Frame Invisivisel
