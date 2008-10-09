@@ -176,31 +176,32 @@ function disableSelection(target){
 
 //Função que carrega uma URL dentro da janela(Parametros: URL,Id da janela, Método:Ajax ou Iframe)
 function loadPage(page,windowContentId,method){
-   ajax();
-   var url = 'src_application/'+ page;
-   xmlhttp.open("POST",url,true);
-   xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8?");
-   
-   xmlhttp.onreadystatechange = function() 
-								{
-									if (xmlhttp.readyState == 1)
+   if(method != 'true'){
+   		document.getElementById(windowContentId).src = url;
+   		alert('a');
+   }else{
+   	
+	   ajax();
+	   var url = 'src_application/'+ page;
+	   xmlhttp.open("POST",url,true);
+	   xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8?");
+	   
+	   xmlhttp.onreadystatechange = function() 
 									{
-									}
-									if (xmlhttp.readyState == 4)
-									{
-								         var texto = xmlhttp.responseText;
-								         texto = texto.replace(/\+/g," ");
-								         texto = unescape(texto);
-										 if(method == 'true'){
+										if (xmlhttp.readyState == 1)
+										{
+											document.getElementById(windowContentId).innerHTML = 'Carregando...';
+										}
+										if (xmlhttp.readyState == 4)
+										{
+									        var texto = xmlhttp.responseText;
+									        texto = texto.replace(/\+/g," ");
+									        texto = unescape(texto);
 											document.getElementById(windowContentId).innerHTML = texto;
-											}
-										else{
-											//document.getElementById(windowContentId).src = url;
-											document.getElementById(windowContentId).src = url;
-											}
+										}
 									}
-								}
-   xmlhttp.send(url);  
+	   xmlhttp.send(url);  
+	}
 }
 
 //Função que altera o Plano de Fundo (Parametro: nome da imagem, o diretório é img)

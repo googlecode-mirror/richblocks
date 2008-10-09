@@ -149,6 +149,7 @@ function buildMenu(){
 						tdShortcut = document.createElement('TD');
 						tdShortcut.setAttribute('class','text_sub_menu');
 						tdShortcut.setAttribute('className','text_sub_menu');
+						
 					trSub.onmouseover = function(){
 						overMenu(document.getElementById(this.getAttribute('menu_reference')).id);
 						if(this.getAttribute('has_sub_menu')=='true'){
