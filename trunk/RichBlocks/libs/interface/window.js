@@ -1,5 +1,6 @@
 /* GLOBALS */
 zIndexMax = 99;
+var URL_PAGE='';
 
 //Função que Carrega o XML de Janelas
 function loadWindows(){
@@ -13,8 +14,12 @@ function loadWindows(){
 
 // Função que constroi a Janela, setando os atributos
 function constructWindow(XMLwindow){	
-	objWindow = new Window(XMLwindow.getAttribute('ajax'),XMLwindow.getAttribute('newInstance'),XMLwindow.getAttribute('forceZindex'));	
-	//alert(XMLwindow.getAttribute('name'));
+	objWindow = new Window(XMLwindow.getAttribute('ajax'),XMLwindow.getAttribute('newInstance'),XMLwindow.getAttribute('forceZindex'));
+	if(URL_PAGE){
+		var src = URL_PAGE; 
+	}else{
+		var src = XMLwindow.getAttribute('pageSrc');
+	}
 	if(XMLwindow.getAttribute('newInstance') == 'false'){
 		for(i in plataform_windows_name){
 			if(XMLwindow.getAttribute('name') == i){
@@ -31,7 +36,7 @@ function constructWindow(XMLwindow){
 							XMLwindow.getAttribute('defaultLeft'),
 							XMLwindow.getAttribute('defaultWidth'),
 							XMLwindow.getAttribute('defaultHeight'),
-							XMLwindow.getAttribute('pageSrc'),
+							src,
 							XMLwindow.getAttribute('footer'));
 	objWindow.setActions(eval(XMLwindow.getAttribute('minimize')),eval(XMLwindow.getAttribute('maximize')),eval(XMLwindow.getAttribute('close')),eval(XMLwindow.getAttribute('drag')),eval(XMLwindow.getAttribute('resize')));
 	theWindow = objWindow.build();
@@ -41,8 +46,9 @@ function constructWindow(XMLwindow){
 }
 
 //Função que recebe o nome e procurra no array de janelas a janela a ser criada
-function buildWindow(nameWindow){
+function buildWindow(nameWindow,url){
 	error = null;
+	URL_PAGE = url;
 	
 	for(i=0;i<xml_windows.length;i++){		
 		if(xml_windows[i].getAttribute('name') == nameWindow){
