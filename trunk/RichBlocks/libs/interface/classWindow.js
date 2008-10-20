@@ -1,5 +1,5 @@
 function Window(method,new_instance,forceZindex) {	
-
+	
 	//Attributes
 	var id;
 	var contentId;

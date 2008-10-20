@@ -24,6 +24,7 @@ return sizeWindow;
 function setMinizeds(){
 	var sizeWindow = getSizeWindow();
 	count_size = 0;
+	line = 0;
 	
 	topMinimizeds = parseInt(sizeWindow[1]) - 28 + 'px';
 	frameMinimizeds.style.top = topMinimizeds;
@@ -33,9 +34,14 @@ function setMinizeds(){
 	}
 
 	if(count_size >=sizeWindow[0]){
+		line = line + 1; 
 		frameMinimizeds.style.height = parseInt(frameMinimizeds.style.height) + parseInt(frameMinimizeds.style.height) + 'px';	
 		topMinimizeds = parseInt(sizeWindow[1]) - 52 + 'px';
 		frameMinimizeds.style.top = topMinimizeds;
+		if(line == 1){
+			//topMinimizeds = parseInt(sizeWindow[1]) - 77 + 'px';
+			//frameMinimizeds.style.top = topMinimizeds ;
+		}
 	}
 }
 
@@ -177,10 +183,8 @@ function disableSelection(target){
 //Função que carrega uma URL dentro da janela(Parametros: URL,Id da janela, Método:Ajax ou Iframe)
 function loadPage(page,windowContentId,method){
    if(method != 'true'){
-   		document.getElementById(windowContentId).src = url;
-   		alert('a');
+   		document.getElementById(windowContentId).src = page;
    }else{
-   	
 	   ajax();
 	   var url = 'src_application/'+ page;
 	   xmlhttp.open("POST",url,true);
