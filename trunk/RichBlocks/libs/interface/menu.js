@@ -264,8 +264,25 @@ function rightButtonMenu(event){
 			if(rightButtonMenus[i].getAttribute('frame_reference') == target.id)
 			{	
 				document.body.appendChild(rightButtonMenus[i]);				
-				document.getElementById(rightButtonMenus[i].id).style.left= event.clientX;
-				document.getElementById(rightButtonMenus[i].id).style.top= event.clientY;
+				
+				var sizeWindow = getSizeWindow();
+				topMenu = rightButtonMenus[i].offsetTop + 30;
+				leftMenu = rightButtonMenus[i].offsetLeft;
+				
+				widthMenu =  rightButtonMenus[i].offsetWidth;
+				heightMenu = rightButtonMenus[i].offsetHeight;
+				
+				if(event.clientX + widthMenu > sizeWindow[0]){
+					document.getElementById(rightButtonMenus[i].id).style.left = event.clientX -widthMenu;
+				}else{
+					document.getElementById(rightButtonMenus[i].id).style.left= event.clientX;
+				}
+				
+				if(event.clientY + heightMenu + 24 > sizeWindow[1]){
+					document.getElementById(rightButtonMenus[i].id).style.top= event.clientY - heightMenu;
+				}else{
+					document.getElementById(rightButtonMenus[i].id).style.top= event.clientY;
+				}
 			}
 		}
 	}
