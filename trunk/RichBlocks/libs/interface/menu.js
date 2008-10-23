@@ -324,6 +324,19 @@ function buildRightButtonMenus(){
 			trSubframeMenu.appendChild(tdTextFrameMenu);
 			tBodySubFrameMenu.appendChild(trSubframeMenu);
 			tableSubframeMenu.appendChild(tBodySubFrameMenu);
+
+			// Teste para separar o menu por categoria inserindo um separador
+				if(menu[i].getElementsByTagName('option')[iOpt].getAttribute('separator')){					
+					trSeparator = document.createElement('TR');
+						tdSeparator = document.createElement('TD');
+						tdSeparator.setAttribute('colSpan','3');
+						tdSeparator.style.fontSize = '2px';
+						tdSeparator.style.paddingTop = '3px';
+						tdSeparator.style.marginTop = '3px';
+						tdSeparator.style.borderBottom = '1px inset gray';
+					trSeparator.appendChild(tdSeparator);
+					tBodySubFrameMenu.appendChild(trSeparator);
+				}	
 		}
 		frameMenuRightButton.appendChild(tableSubframeMenu);
 		rightButtonMenus.push(frameMenuRightButton);

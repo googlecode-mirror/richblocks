@@ -5,7 +5,7 @@
 		<menu name="menu_1" value="RichTools" img="img.png">
 			<option name="option1_menu_1" value="Google" windowTarget="google" img="google.gif" shortcut="Alt+G"></option>
 			<option name="option2_menu_1" value="Plano de Fundo" windowTarget="change_background" img="background_image.png" shortcut="Alt+PI"></option>
-			<option name="option3_menu_1" value="Ajuda" windowTarget="help" img="help.png" shortcut="Alt+H"></option>
+			<option name="option3_menu_1" value="Ajuda" windowTarget="help" img="help.png" shortcut="Alt+H" separator="true"></option>
 			<option name="option4_menu_1" value="Sobre..." windowTarget="sobre" img="rich_blocks_ico.png" shortcut="Alt+S"></option>
 		</menu>
 		
