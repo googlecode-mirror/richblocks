@@ -18,6 +18,7 @@ function Window(method,new_instance,forceZindex) {
 	var new_instance;
 	var z_index;
 	var forceZindex;
+	var posAbsolute;
 	var objDOM_window;
 	var objDOM_Content;
 	var objDOM_windowBar;
@@ -263,6 +264,16 @@ function Window(method,new_instance,forceZindex) {
 		return z_index;
 	}
 	
+	//Seta a posição absoluta da janela
+	this.setPosAbsolute = function(p){
+		posAbsolute = p;
+	}
+	
+	//Retorna a posição absoluta da janela
+	this.getPosAbsolute = function(){
+		return posAbsolute;
+	}
+	
 	//Método que redimensiona a janela
 	this.resize= function (event){		
 		// Teste para ver se a janela pode ser redimensionada (Firefox reconhece false como String, IE reconhece como false mesmo)
@@ -289,16 +300,37 @@ function Window(method,new_instance,forceZindex) {
 		if(!event){
 			event = window.event;
 		}
-				
+		var sizeWindow = getSizeWindow();
+		
 		objDOM_window.style.width = this.getWidth();
 		objDOM_window.setAttribute('original_width',this.getWidth());
 		objDOM_window.style.height = this.getHeight();
 		objDOM_window.setAttribute('original_height',this.getHeight());
 		objDOM_window.style.top = this.getTopPosition();
+		
+		//Testes para verificar posições absolutas definidas no XML
+		if(this.getPosAbsolute() == 'left'){
+			objDOM_window.style.left = '0px';
+			objDOM_window.setAttribute('original_left','0px');
+			
+		}else if(this.getPosAbsolute() == 'right'){
+			pos = sizeWindow[0] - parseInt(objDOM_window.style.width) + 'px';
+			objDOM_window.style.left = pos;
+			objDOM_window.setAttribute('original_left',pos);
+			alert(objDOM_window.getAttribute('original_left'));
+			
+		}else if(this.getPosAbsolute() == 'center'){
+			pos = sizeWindow[0] / 2 - parseInt(objDOM_window.style.width) / 2 + 'px';
+			objDOM_window.style.left = pos;
+			objDOM_window.setAttribute('original_left',pos);
+			
+		}else{
+				objDOM_window.style.left = this.getLeftPosition();
+				objDOM_window.setAttribute('original_left',this.getLeftPosition());
+				objDOM_window.setAttribute('original_top',this.getTopPosition());
+			}
 		objDOM_window.setAttribute('xml_name',this.getXMLname());
-		objDOM_window.setAttribute('original_top',this.getTopPosition());
-		objDOM_window.style.left = this.getLeftPosition();
-		objDOM_window.setAttribute('original_left',this.getLeftPosition());
+				
 		//objDOM_window.setAttribute('new_instance',this.getNewInstance());
 		objDOM_Content.style.width = parseInt(this.getWidth()) - 16;
 		objDOM_Content.style.height = parseInt(this.getHeight()) - 60;
@@ -335,7 +367,7 @@ function Window(method,new_instance,forceZindex) {
 	}
 	
 	//Seta as propriedades do Objeto
-	this.setProperties = function(XMLname,title,description,top,left,width,height,pageSrc,footer,new_instance,forceZindex){
+	this.setProperties = function(XMLname,title,description,top,left,width,height,pageSrc,footer,new_instance,forceZindex,posAbsolute){
 		this.setXMLname(XMLname);
 		this.setTitle(title);
 		this.setDescription(description);
@@ -347,6 +379,7 @@ function Window(method,new_instance,forceZindex) {
 		this.setFooter(footer);
 		this.setNewInstance(new_instance);
 		this.setForceZindex(forceZindex);
+		this.setPosAbsolute(posAbsolute);
 	}
 	
 	//Método responsável pelo controle de todos os eventos dos botões da Janela

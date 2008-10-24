@@ -37,7 +37,10 @@ function constructWindow(XMLwindow){
 							XMLwindow.getAttribute('defaultWidth'),
 							XMLwindow.getAttribute('defaultHeight'),
 							src,
-							XMLwindow.getAttribute('footer'));
+							XMLwindow.getAttribute('footer'),
+							'',
+							'',
+							XMLwindow.getAttribute('posAbsolute'));
 	objWindow.setActions(eval(XMLwindow.getAttribute('minimize')),eval(XMLwindow.getAttribute('maximize')),eval(XMLwindow.getAttribute('close')),eval(XMLwindow.getAttribute('drag')),eval(XMLwindow.getAttribute('resize')));
 	theWindow = objWindow.build();
 	plataform_windows[theWindow.id] = theWindow;
