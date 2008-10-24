@@ -20,6 +20,7 @@
 			close="true"
 			drag="true"
 			resize="true"
+			posAbsolute="center" 
 			defaultFooter="Alterando Plano de Fundo">
 	</window>	
 	
@@ -41,6 +42,7 @@
 			close="true"
 			drag="true"
 			resize="true"
+			posAbsolute="center" 
 			defaultFooter="Google">
 	</window>	
 	
@@ -62,6 +64,7 @@
 		close="true"
 		drag="true"
 		resize="false"
+		posAbsolute="right" 
 		defaultFooter="Ajuda">
 	</window>
 	
@@ -83,6 +86,7 @@
 		close="true"
 		drag="true"
 		resize="false"
+		posAbsolute="none" 
 		defaultFooter="Sobre RichBlocks">
 	</window>
 	
