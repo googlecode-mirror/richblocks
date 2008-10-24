@@ -124,8 +124,9 @@ function minimized(objWindow){
 //Função responsável por fazer o efeito de maximizar a janela
 function maximized(objWindow,objContent,iptMax){
 	if(iptMax.style.backgroundImage == 'url(img/back_button_max_restore.png)'){
-		objWindow.style.top = objWindow.getAttribute('original_top') + 'px';
-		objWindow.style.left = objWindow.getAttribute('original_left') + 'px';
+		alert('MAXIMIZADO - VAI RESTAURAR');
+		objWindow.style.top = objWindow.getAttribute('x') + 'px';
+		//objWindow.style.left = objWindow.getAttribute('y') + 'px';
 		objWindow.style.width = objWindow.getAttribute('original_width') + 'px';
 		objWindow.style.height = objWindow.getAttribute('original_height') + 'px';
 		
@@ -138,6 +139,7 @@ function maximized(objWindow,objContent,iptMax){
 		objContent.style.height = h + 'px';		
 		return true;
 	}
+	alert('NAO MAXIMIZADO - VAI MAXIMIZAR');
 	var sizeWindow = getSizeWindow();
 	objWindow.style.top = '72px';
 	objWindow.style.left = '0px';

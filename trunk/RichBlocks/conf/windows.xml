@@ -42,7 +42,7 @@
 			close="true"
 			drag="true"
 			resize="true"
-			posAbsolute="center" 
+			posAbsolute="right" 
 			defaultFooter="Google">
 	</window>	
 	

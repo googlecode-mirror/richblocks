@@ -84,7 +84,13 @@ top  += e.offsetTop;
 return {x: coords.x - left, y: coords.y - top};
 }
 document.onmouseup = function() {
-objSelecionado = null;
+	try{
+		document.getElementById(objSelecionado).setAttribute('x',document.getElementById(objSelecionado).offsetTop);
+		document.getElementById(objSelecionado).setAttribute('y',document.getElementById(objSelecionado).offsetLeft);
+		//alert(document.getElementById(objSelecionado).getAttribute('y'));
+	}catch(e){	}
+	objSelecionado = null;
+
 }
 function dragdrop(local_click, caixa_movida) {
 document.getElementById(local_click).style.cursor = 'default';

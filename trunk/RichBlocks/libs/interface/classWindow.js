@@ -311,18 +311,14 @@ function Window(method,new_instance,forceZindex) {
 		//Testes para verificar posições absolutas definidas no XML
 		if(this.getPosAbsolute() == 'left'){
 			objDOM_window.style.left = '0px';
-			objDOM_window.setAttribute('original_left','0px');
 			
 		}else if(this.getPosAbsolute() == 'right'){
 			pos = sizeWindow[0] - parseInt(objDOM_window.style.width) + 'px';
 			objDOM_window.style.left = pos;
-			objDOM_window.setAttribute('original_left',pos);
-			alert(objDOM_window.getAttribute('original_left'));
 			
 		}else if(this.getPosAbsolute() == 'center'){
 			pos = sizeWindow[0] / 2 - parseInt(objDOM_window.style.width) / 2 + 'px';
 			objDOM_window.style.left = pos;
-			objDOM_window.setAttribute('original_left',pos);
 			
 		}else{
 				objDOM_window.style.left = this.getLeftPosition();
@@ -362,6 +358,7 @@ function Window(method,new_instance,forceZindex) {
 	//Maximiza
 	this.maximize = function(objWindow,objContent,iptMax){
 		if(maximized(objWindow,objContent,iptMax)){
+			objWindow.setAttribute('max',true);
 			return true;
 		}
 	}
