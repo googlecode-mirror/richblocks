@@ -121,9 +121,22 @@ function minimized(objWindow){
 	objWindow.style.display = 'none';
 }
 
+function restore(objId,contentId){
+	document.getElementById(objId).style.top = document.getElementById(objId).getAttribute('top');
+	document.getElementById(objId).style.left = document.getElementById(objId).getAttribute('left');
+	document.getElementById(objId).style.width = document.getElementById(objId).getAttribute('w');
+	document.getElementById(objId).style.height = document.getElementById(objId).getAttribute('h');
+	document.getElementById(contentId).style.width = document.getElementById(objId).getAttribute('w') - 16 + 'px';
+	document.getElementById(contentId).style.height = document.getElementById(objId).getAttribute('h') - 60 + 'px'; 
+	document.getElementById(objId).setAttribute('maximized',false);
+}
+
 //Função responsável por fazer o efeito de maximizar a janela
 function maximized(objWindow,objContent,iptMax){
-	if(iptMax.style.backgroundImage == 'url(img/back_button_max_restore.png)'){
+	if(document.getElementById(objWindow.id).getAttribute('maximized')== 'true' || document.getElementById(objWindow.id).getAttribute('maximized')== true){
+		restore(objWindow.id,objContent.id);
+		return true;
+		/*
 		alert('MAXIMIZADO - VAI RESTAURAR');
 		objWindow.style.top = objWindow.getAttribute('x') + 'px';
 		//objWindow.style.left = objWindow.getAttribute('y') + 'px';
@@ -138,8 +151,14 @@ function maximized(objWindow,objContent,iptMax){
 		objContent.style.width = w + 'px';
 		objContent.style.height = h + 'px';		
 		return true;
+		*/
 	}
-	alert('NAO MAXIMIZADO - VAI MAXIMIZAR');
+	document.getElementById(objWindow.id).setAttribute('maximized',true);
+	document.getElementById(objWindow.id).setAttribute('top',objWindow.offsetTop);
+	document.getElementById(objWindow.id).setAttribute('left',objWindow.offsetLeft);
+	document.getElementById(objWindow.id).setAttribute('w',objWindow.offsetWidth);
+	document.getElementById(objWindow.id).setAttribute('h',objWindow.offsetHeight);
+	
 	var sizeWindow = getSizeWindow();
 	objWindow.style.top = '72px';
 	objWindow.style.left = '0px';
