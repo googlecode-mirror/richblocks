@@ -24,7 +24,9 @@ if (objSelecionado) {
   // Posiciona a janela de acordo com o mouse
   document.getElementById(objSelecionado).style.left = mousePos.x - mouseOffset.x + 'px';
   document.getElementById(objSelecionado).style.top = mousePos.y - mouseOffset.y + 'px';
-     
+  
+  //document.getElementById(objSelecionado).setAttribute('x',document.getElementById(objSelecionado).offsetTop);
+  //document.getElementById(objSelecionado).setAttribute('y',document.getElementById(objSelecionado).offsetLeft);  
    
   max_top = 72;
   max_left = - parseInt(document.getElementById(objSelecionado).style.width);
@@ -84,13 +86,7 @@ top  += e.offsetTop;
 return {x: coords.x - left, y: coords.y - top};
 }
 document.onmouseup = function() {
-	try{
-		document.getElementById(objSelecionado).setAttribute('x',document.getElementById(objSelecionado).offsetTop);
-		document.getElementById(objSelecionado).setAttribute('y',document.getElementById(objSelecionado).offsetLeft);
-		//alert(document.getElementById(objSelecionado).getAttribute('y'));
-	}catch(e){	}
 	objSelecionado = null;
-
 }
 function dragdrop(local_click, caixa_movida) {
 document.getElementById(local_click).style.cursor = 'default';
