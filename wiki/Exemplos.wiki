@@ -22,15 +22,10 @@ Alterando o arquivo menu.xml
 
 {{{
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-
 <MenuInterfaceRia>
-
        <menu name="menu_0" value="Menu">
-
-               <option name="option1_menu_0" value="Hello World" windowTarget="hello" img="img.gif" shortcut="Alt+G"></option>
-
+             <option name="option1_menu_0" value="Hello World" windowTarget="hello" img="img.gif" shortcut="Alt+G"></option>
        </menu>
-
 </MenuInterfaceRia>
 }}}
 
@@ -44,52 +39,28 @@ Note no código acima é dado um nome para o menu, definido no atributo "name" e
 Alterando o arquivo windows.xml
 {{{
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-
 <WindowInterfaceRia>
-
-
        <window name="hello"
-
                title="Hello World"
-
                description="Janela Hello World"
-
                defaultTop="100"
-
                defaultLeft="300"
-
                defaultWidth="300"
-
                defaultHeight="400"
-
                minWidth="120"
-
                minHeight="120"
-
                pageSrc="hello.html"
-
                ajax="true"
-
                newInstance="false"
-
                forceZindex="true"
-
                minimize="true"
-
                maximize="true"
-
                close="true"
-
                drag="true"
-
                resize="true"
-
                posAbsolute="none"
-
                defaultFooter="Hello World">
-
        </window>
-
 </WindowInterfaceRia>        
 
 }}}
@@ -106,17 +77,10 @@ Alterando o arquivo right_button_menu.xml
 
 {{{
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-
 <rightButtonMenu>
-
-       
-
                <menu name="menu_1" frameReference="frame_menu">
-
                        <option name="option1_menu1" value="Hello World " windowTarget="hello" img="img.png"></option>
-
                </menu>
-
 </rightButtonMenu>
 
 }}}
@@ -130,22 +94,15 @@ No código acima o "frameReference" tem o valor de frame_menu, que o frame onde 
 Outro valor possível é frama_properties, que é corpo da aplicação.
 
 
-
 Arquivo hello.html
 
 {{{
 <html>
-
        <head>
-
        </head>
-
 <body>
-
        Hello World
-
 </body>
-
 </html>
 }}}
 
