@@ -357,7 +357,7 @@ function buildRightButtonMenus(){
 			trSubframeMenu.onmousedown = function(){
 				outMenu(this.id);
 				if(this.getAttribute('xml_function_name')){
-					alert('Function');
+					exec(this.getAttribute('xml_function_name'));
 				}	
 				if(this.getAttribute('xml_window_name')){
 					buildWindow(this.getAttribute('xml_window_name'))	

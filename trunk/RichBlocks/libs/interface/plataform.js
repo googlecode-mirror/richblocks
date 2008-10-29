@@ -41,6 +41,7 @@ var frameMinimizeds;
 var plataform_windows = new Array();
 var plataform_windows_name = new Array();
 var xml_windows = new Array();
+var xml_functions = new Array();
 var window_z_index = 0;
 var window_focus = null;
 var zIndex_blackBackground = 1000000;
@@ -156,6 +157,9 @@ function buildPlataform(){
 	
 	// Le o arquivo XML e armazena no array GLOBAL xml_windows
 	loadWindows();
+	
+	// Le o arquivo XML e armazena no array GLOBAL xml_functions
+	loadFunctions();
 }
 
 
