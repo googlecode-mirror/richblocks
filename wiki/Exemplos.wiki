@@ -1,13 +1,42 @@
-#summary One-sentence summary of this page.
+Especificação da Aplicação:
 
-= Introduction =
-
-Add your content here.
+A aplicação deve abrir uma janela com o texto "Hello World".
 
 
-= Details =
+Desenvolvimento:
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Passo 1 : Mapear menus e janelas.
+
+Passo 2 : Editar o arquivo menu.xml para suportar a aplicação
+
+Passo 3 : Editar o arquivo windows.xml para suportar a aplicação
+
+Passo 4: Criar uma página que terá o texto e será exibida dentro da janela.
+
+
+
+Código:
+
+
+Alterando o arquivo menu.xml
+
+{{{
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<MenuInterfaceRia>
+
+       <menu name="menu_0" value="Menu">
+
+               <option name="option1_menu_0" value="Hello World" windowTarget="hello" img="img.gif" shortcut="Alt+G"></option>
+
+       </menu>
+
+</MenuInterfaceRia>
+}}}
+
+
+Depois de mapeado quais menus o sistema irá ter, temos que alterar o arquivo xml.
+
+Note no código acima é dado um nome para o menu, definido no atributo "name" e um valor, que é definido pelo atributo "value".
+
+"name" é obrigatório pois é a referência que o Javascript usa para montar o menu, e "value" é o valor que aparecerá no menu.
