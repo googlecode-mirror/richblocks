@@ -78,9 +78,9 @@ Alterando o arquivo right_button_menu.xml
 {{{
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <rightButtonMenu>
-               <menu name="menu_1" frameReference="frame_menu">
-                       <option name="option1_menu1" value="Hello World " windowTarget="hello" img="img.png"></option>
-               </menu>
+      <menu name="menu_1" frameReference="frame_menu">
+            <option name="option1_menu1" value="Hello World " windowTarget="hello" img="img.png"></option>
+      </menu>
 </rightButtonMenu>
 
 }}}
