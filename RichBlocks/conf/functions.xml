@@ -3,7 +3,7 @@
 	
 	<function name="teste">
 		<![CDATA[
-			alert('função teste');
+			alert('Função TEste');
 		]]>
 	</function>
 	
