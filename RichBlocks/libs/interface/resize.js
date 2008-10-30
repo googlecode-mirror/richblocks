@@ -1,5 +1,5 @@
 /* 
-   Copyright 2008 Jaydson Gomes - RichBlocks  
+   Copyright 2008 Jaydson Gomes,Felipe Nascimento - RichBlocks  
    
    This file is part of the program RichBlocks
    
@@ -48,14 +48,19 @@ function resizing(event){
 	}
 	if(event.clientY - parseInt(document.getElementById(objToResize_ID).style.top) <= 100){
 		document.getElementById(objToResize_ID).style.height= '100px';
-		document.getElementById(objContentToResize_ID).style.height = 100 - 60 + 'px';
+		document.getElementById(objContentToResize_ID).style.height = 100 - 46 + 'px';
 		return;
 	}
 	document.getElementById(objToResize_ID).style.width= event.clientX - parseInt(document.getElementById(objToResize_ID).style.left);
 	document.getElementById(objToResize_ID).style.height= event.clientY - parseInt(document.getElementById(objToResize_ID).style.top);
 	
-	document.getElementById(objContentToResize_ID).style.width = parseInt(document.getElementById(objToResize_ID).style.width) - 16 + 'px';
-	document.getElementById(objContentToResize_ID).style.height = parseInt(document.getElementById(objToResize_ID).style.height) - 60 + 'px';
+	if(document.all){
+		document.getElementById(objContentToResize_ID).style.width = parseInt(document.getElementById(objToResize_ID).style.width) - 5 + 'px';
+		document.getElementById(objContentToResize_ID).style.height = parseInt(document.getElementById(objToResize_ID).style.height) - 46 + 'px';
+	}else{
+		document.getElementById(objContentToResize_ID).style.width = parseInt(document.getElementById(objToResize_ID).style.width) - 8 + 'px';
+		document.getElementById(objContentToResize_ID).style.height = parseInt(document.getElementById(objToResize_ID).style.height) - 46 + 'px';
+	}
 	
 	document.getElementById(objToResize_ID).original_width = parseInt(document.getElementById(objToResize_ID).style.width) - 16 + 'px';
 	document.getElementById(objToResize_ID).original_height = parseInt(document.getElementById(objToResize_ID).style.height) - 60 + 'px';

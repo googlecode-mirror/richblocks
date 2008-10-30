@@ -163,8 +163,12 @@ function restore(objId,contentId){
 	document.getElementById(objId).style.left = document.getElementById(objId).getAttribute('left');
 	document.getElementById(objId).style.width = document.getElementById(objId).getAttribute('w');
 	document.getElementById(objId).style.height = document.getElementById(objId).getAttribute('h');
-	document.getElementById(contentId).style.width = document.getElementById(objId).getAttribute('w') - 16 + 'px';
-	document.getElementById(contentId).style.height = document.getElementById(objId).getAttribute('h') - 60 + 'px'; 
+	if(document.all){
+		document.getElementById(contentId).style.width = document.getElementById(objId).getAttribute('w') - 5 + 'px';
+	}else{
+		document.getElementById(contentId).style.width = document.getElementById(objId).getAttribute('w') - 8 + 'px';
+	}
+	document.getElementById(contentId).style.height = document.getElementById(objId).getAttribute('h') - 46 + 'px'; 
 	document.getElementById(objId).setAttribute('maximized',false);
 }
 
@@ -200,9 +204,9 @@ function maximized(objWindow,objContent,iptMax){
 	objWindow.style.top = '72px';
 	objWindow.style.left = '0px';
 	objWindow.style.width = sizeWindow[0];
-	objContent.style.width = parseInt(sizeWindow[0]) - 16 + 'px';
+	objContent.style.width = parseInt(sizeWindow[0]) - 5 + 'px';
 	objWindow.style.height = parseInt(sizeWindow[1] - 102 + 'px');
-	objContent.style.height = parseInt(sizeWindow[1] - 165 + 'px');	
+	objContent.style.height = parseInt(sizeWindow[1] - 148 + 'px');	
 }
 
 //Função responsável aletar a cor da barra da janela quando esta em foco

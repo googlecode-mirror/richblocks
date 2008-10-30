@@ -1,5 +1,5 @@
 /* 
-   Copyright 2008 Jaydson Gomes - RichBlocks  
+   Copyright 2008 Jaydson Gomes,Felipe Nascimento - RichBlocks  
    
    This file is part of the program RichBlocks
    

@@ -3,9 +3,9 @@
 	
 		<!--Botão direito na barra superior-->
 		<menu name="menu_1" frameReference="frame_menu">
-			<option name="option1_menu1" value="Fechar todas Janelas Abertas " functionTarget="teste" img="img.png"></option>
+			<option name="option1_menu1" value="Fechar todas Janelas Abertas " functionTarget="killAllWindows" img="img.png"></option>
 			<option name="option2_menu1" value="Alerta" functionTarget="showAlert" img="img.png"></option>
-			<option name="option3_menu1" value="Salvar" functionTarget="saveProject" img="img.png" separator="true"></option>
+			<option name="option3_menu1" value="Abrir Janela" functionTarget="openWindow" img="img.png" separator="true"></option>
 			<option name="option4_menu1" value="Sair" functionTarget="closeProject" img="img.png"></option>
 		</menu>
 		

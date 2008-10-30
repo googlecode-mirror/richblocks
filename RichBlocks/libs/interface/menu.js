@@ -38,6 +38,7 @@
 /* GLOBALS */
 var activeMenu;
 var rightButtonMenus = new Array();
+var windowRightButtonMenus = new Array(); 
 
 //Aplica o efeito de onmouseout em todos menus 
 function resetStyleMenus(){
@@ -264,28 +265,38 @@ function resetRightButtonMenus(){
 		{
 			document.body.removeChild(document.body.getElementsByTagName('DIV')[i]);
 		}
+		if(divID[0]== 'windowrightbutton')
+		{
+			document.body.removeChild(document.body.getElementsByTagName('DIV')[i]);
+		}
 	}
 }
 
 //Aloca o botão direito conforme a posição clicado na janela
-function windowRightButtonMenu(){
+function windowRightButtonMenu(event,obj){
+	//alert(obj.getAttribute('xml_name'));
 	//hiddenMenus();
-	if ( !event ){event = window.event;}	
-	var target = event.target ? event.target : event.srcElement;
+	//alert(event);
+	if ( !event ){event = window.event;}
+	//alert(event);
+	try{
+		var target = event.target ? event.target : event.srcElement;
+	}catch(e){}
 	
-	if(event.which == 3 || event.button == '0')
-	{			
-		for(i=0;i<rightButtonMenus.length;i++)
-		{
-			//alert(rightButtonMenus[i]);
-			if(rightButtonMenus[i].getAttribute('frame_reference') == target.id)
-			{	
-				document.body.appendChild(rightButtonMenus[i]);				
-				document.getElementById(rightButtonMenus[i].id).style.left= event.clientX;
-				document.getElementById(rightButtonMenus[i].id).style.top= event.clientY;
+	try{
+		if(event.which == 3 || event.button == '0')
+		{	
+			for(i=0;i<windowRightButtonMenus.length;i++)
+			{
+				if(windowRightButtonMenus[i].getAttribute('windowReference') == obj.getAttribute('xml_name'))
+				{	
+					document.body.appendChild(windowRightButtonMenus[i]);				
+					document.getElementById(windowRightButtonMenus[i].id).style.left= event.clientX;
+					document.getElementById(windowRightButtonMenus[i].id).style.top= event.clientY;
+				}
 			}
 		}
-	}
+	}catch(e){}
 }
 
 //Aloca o botão direito conforme a posição clicada na plataforma
@@ -372,7 +383,7 @@ function buildRightButtonMenus(){
 			tdTextFrameMenu = document.createElement('TD');			
 			tdTextFrameMenu.setAttribute('class','rb_text_frame_menu');
 			tdTextFrameMenu.setAttribute('className','rb_text_frame_menu');
-			tdTextFrameMenu.style.paddingLeft = '6\px';
+			tdTextFrameMenu.style.paddingLeft = '6px';
 			tdTextFrameMenu.innerHTML = menu[i].getElementsByTagName('option')[iOpt].getAttribute('value');
 			trSubframeMenu.appendChild(tdImgframeMenu);
 			trSubframeMenu.appendChild(tdTextFrameMenu);
@@ -401,13 +412,12 @@ function buildRightButtonMenus(){
 function buildWindowRightButtonMenu(){
 	xmlDoc =loadXmlDocument('conf/window_right_button_menu.xml');   // Carrega o arquivo XML com a definição de Menus do botao direito
 	menu = xmlDoc.getElementsByTagName("menu"); 	   				// Variavel menu pega todas as tags <menu> do arquivo XML
-	
 	for(i=0;i<menu.length;i++)
 	{
 		frameMenuRightButton = document.createElement('DIV');
 		frameMenuRightButton.setAttribute('class','rb_frame_menu');		
 		frameMenuRightButton.setAttribute('className','rb_frame_menu');
-		frameMenuRightButton.id = 'window_rightbutton_'+menu[i].getAttribute('name');
+		frameMenuRightButton.id = 'windowrightbutton_'+menu[i].getAttribute('name');
 		frameMenuRightButton.setAttribute('windowReference',menu[i].getAttribute('windowReference'));
 		tableSubframeMenu = document.createElement('TABLE');
 		tableSubframeMenu.setAttribute('cellspacing','0');
@@ -426,6 +436,9 @@ function buildWindowRightButtonMenu(){
 			trSubframeMenu.onmousedown = function(){
 				outMenu(this.id);
 			}
+			trSubframeMenu.onclick= function(){
+				alert('aaaa');	
+			}
 			tdImgframeMenu = document.createElement('TD');
 			tdImgframeMenu.setAttribute('class','rb_text_frame_menu');
 			tdImgframeMenu.setAttribute('className','rb_text_frame_menu');
@@ -443,7 +456,7 @@ function buildWindowRightButtonMenu(){
 			tableSubframeMenu.appendChild(tBodySubFrameMenu);
 		}
 		frameMenuRightButton.appendChild(tableSubframeMenu);
-		rightButtonMenus.push(frameMenuRightButton);
+		windowRightButtonMenus.push(frameMenuRightButton);
 	}
 }
 
