@@ -1,18 +1,17 @@
 <?xml version="1.0"?>
 <windowRightButtonMenu>
-		<menu name="menu_1" windowReference="window1">
-			<option name="option1_menu1" value="Botao Direito" function="" windowTarget="new_project" img="img.png"></option>
-			<option name="option2_menu1" value="Abrir" windowTarget="open_project" img="img.png"></option>
-			<option name="option3_menu1" value="Salvar" functionTarget="saveProject" img="img.png" separator="true"></option>
-			<option name="option4_menu1" value="Sair" functionTarget="closeProject" img="img.png"></option>
+		<menu name="menu_1" windowReference="change_background">
+			<option name="option1_menu1" value="Minimizar" functionTarget="killAllWindows" img="img.png"></option>
+			<option name="option2_menu1" value="Maximizar" functionTarget="open_project" img="img.png" separator="true"></option>
+			<option name="option3_menu1" value="Fechar" functionTarget="saveProject" img="img.png" separator="true"></option>
 		</menu>
 		
-		<menu name="menu_2" windowReference="window2">
+		<menu name="menu_2" windowReference="google">
 			<option name="option1_menu2" value="Preferenciasinhas" windowTarget="config_pref" img="img.png" separator="true"></option>
 			<option name="option2_menu2" value="Format" windowTarget="format" img="img.png"></option>
 		</menu>
 		
-		<menu name="menu_3" windowReference="">
+		<menu name="menu_3" windowReference="sobre">
 			<option name="option1_menu3" value="Preferenciasinhas do Joao" windowTarget="config_pref" img="img.png"></option>
 			<option name="option2_menu3" value="Formatar" windowTarget="format" img="img.png"></option>
 			<option name="option3_menu3" value="FormatarFotar" windowTarget="format" img="img.png"></option>

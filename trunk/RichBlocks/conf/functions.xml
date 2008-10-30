@@ -7,4 +7,18 @@
 		]]>
 	</function>
 	
+	<function name="killAllWindows">
+		<![CDATA[
+			alert('Fechar todas as Janelas');
+		]]>
+	</function>
+	
+	<function name="openWindow">
+		<![CDATA[
+			alert('a');
+			buildWindow('change_background');
+			alert('b');
+		]]>
+	</function>
+	
 </functions>

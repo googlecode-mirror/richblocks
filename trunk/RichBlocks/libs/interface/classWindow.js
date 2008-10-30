@@ -343,6 +343,7 @@ function Window(method,new_instance,forceZindex) {
 		objDOM_window.style.height = this.getHeight();
 		objDOM_window.setAttribute('original_height',this.getHeight());
 		objDOM_window.style.top = this.getTopPosition();
+		objDOM_window.setAttribute('xml_name',this.getXMLname());
 		
 		//Testes para verificar posições absolutas definidas no XML
 		if(this.getPosAbsolute() == 'left'){
@@ -364,8 +365,13 @@ function Window(method,new_instance,forceZindex) {
 		objDOM_window.setAttribute('xml_name',this.getXMLname());
 				
 		//objDOM_window.setAttribute('new_instance',this.getNewInstance());
-		objDOM_Content.style.width = parseInt(this.getWidth()) - 16;
-		objDOM_Content.style.height = parseInt(this.getHeight()) - 60;
+		if(document.all){
+			objDOM_Content.style.width = parseInt(this.getWidth()) - 5;	
+		}else{
+			objDOM_Content.style.width = parseInt(this.getWidth()) - 8;
+		}
+		
+		objDOM_Content.style.height = parseInt(this.getHeight()) - 46;
 		
 		objDOM_window.setAttribute('focus',true);
 		firstWidth = objDOM_window.style.width;
@@ -425,6 +431,7 @@ function Window(method,new_instance,forceZindex) {
 			min(objDOM_window);
 		}
 		
+		// Buttom Maximizar
 		iptMax.onclick = function(){		
 			if(max(objDOM_window,objDOM_Content,iptMax)){
 				this.style.backgroundImage = 'url(img/back_button_max.png)';
@@ -436,9 +443,7 @@ function Window(method,new_instance,forceZindex) {
 		//Button Close
 		iptClose.onclick = function (){
 			window_focus = null;
-			
 			// Remove o elemento
-			//opacity(objDOM_window.id, 100, 0, 350);
 			document.body.removeChild(objDOM_window);
 			
 			//Laço que percorre todas as janelas abertas e deleta do array que a armazena
@@ -475,7 +480,13 @@ function Window(method,new_instance,forceZindex) {
 			
 			objDOM_window.style.zIndex = window_z_index;
 			changeBackgroundWindowBar(objDOM_window.id);
-		}	
+		}
+		
+		//objDOM_windowBar.oncontextmenu = windowRightButtonMenu(objDOM_window);
+		objDOM_windowBar.oncontextmenu = function(event){
+			if (!event ){event = window.event;}
+			windowRightButtonMenu(event,objDOM_window);
+		}
 	}
 	
 	//Adiciona Drag-n-Drop(Aqui é feito o teste para ver se a janela é dragavel ou não)
