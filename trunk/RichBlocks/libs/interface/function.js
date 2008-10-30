@@ -45,10 +45,11 @@ function loadFunctions(){
 function exec(functionName){
 	for(i=0;i<xml_functions.length;i++){		
 		if(xml_functions[i].getAttribute('name') == functionName){
-				//for(i in xml_functions[i]){
-					//alert(i);
-				//}
-				alert(xml_functions[i].text);
+			if(document.all){
+				eval(xml_functions[i].text);
+			}else{
+					eval(xml_functions[i].firstChild.nextSibling.nodeValue);
+			}
 				return true;
 		}else{
 			  error = 'Erro ao tentar encontrar a função com o nome "'+functionName+'". \nVerifique no arquivo funcions.xml se existe alguma função com este nome.';
