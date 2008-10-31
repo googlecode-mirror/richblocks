@@ -23,7 +23,7 @@ Abaixo na tabela 1 segue a lista de atributos que um menu pode possuir.
 ||windowTarget||Especifica qual janela deve ser aberta pelo sistema quando clicado. A janela é definida por um nome único definido no arquivo windows.xml|| Texto||
 ||img|| Especifica a URL de uma imagem que será exibida ao lado do valor|| Texto
 ||separator||Insere uma linha para sinalizar categorias de opções|| Booleano||
-|| shortcut|| Especifica qual a combinação de teclas servirá como atalho para executar este Menu|| Texto||
+|| shortcut|| Especifica qual a combinação de teclas servirá como atalho para executar este Menu|| Texto|| ||
  
 Abaixo um exemplo de configuração de menu que fica no topo:
 {{{
