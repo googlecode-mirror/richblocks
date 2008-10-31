@@ -12,15 +12,19 @@ São eles: _menu.xml_ e _right_button_menu.xml_.
 Abaixo na tabela 1 segue a lista de atributos que um menu pode possuir.
 
 *Tabela 1*
-|| *ATRIBUTOS* || *DESCRIÇÃO* ||
-|| name || Especifica o nome do menu, este é necessário para criar uma referência no sistema ||
-|| value || Especifica o que será exibido como oção no sistema ||
-|| function || Especifica qual função deve ser executada ao ser clicado. A função é definida por um nome único que foi especificado no arquivo functions.xml ||
-|| windowTarget || Especifica qual janela deve ser aberta pelo sistema quando clicado. A janela é definida por um nome único definido no arquivo windows.xml ||
-|| img || Especifica a URL de uma imagem que será exibida ao lado do valor ||
-|| shortcut || Especifica qual a combinação de teclas servirá como atalho para executar este Menu||
-
-
+||MENU||  ||
+||Atibutos || Descrição || Valores ||
+|| name|| Especifica o nome do menu mestre(topo) || Texto ||
+|| value || Especifica o valor do menu mestre(topo), este é o valor que aparece no menu ||Texto || 
+|| MENU OPTION || ||
+||Atibutos || Descrição || Valores || 
+|| name || Especifica o nome da opção do menu, este é necessário para criar uma referência no sistema.||Texto||
+||value|| Especifica o valor que será exibido como oção no sistema|| Texto ||
+||windowTarget||Especifica qual janela deve ser aberta pelo sistema quando clicado. A janela é definida por um nome único definido no arquivo windows.xml|| Texto||
+||img|| Especifica a URL de uma imagem que será exibida ao lado do valor|| Texto
+||separator||Insere uma linha para sinalizar categorias de opções|| Booleano||
+|| shortcut|| Especifica qual a combinação de teclas servirá como atalho para executar este Menu|| Texto||
+ 
 Abaixo um exemplo de configuração de menu que fica no topo:
 {{{
 <menu name="menu_0" value="Arquivo" img="img.png" shortcut="Ctrl+C">
