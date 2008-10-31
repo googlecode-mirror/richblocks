@@ -12,11 +12,11 @@ São eles: _menu.xml_ e _right_button_menu.xml_.
 Abaixo na tabela 1 segue a lista de atributos que um menu pode possuir.
 
 *Tabela 1*
-||MENU||  ||
+||MENU||  || ||
 ||Atibutos || Descrição || Valores ||
 || name|| Especifica o nome do menu mestre(topo) || Texto ||
 || value || Especifica o valor do menu mestre(topo), este é o valor que aparece no menu ||Texto || 
-|| MENU OPTION || ||
+|| MENU OPTION || || ||
 ||Atibutos || Descrição || Valores || 
 || name || Especifica o nome da opção do menu, este é necessário para criar uma referência no sistema.||Texto||
 ||value|| Especifica o valor que será exibido como oção no sistema|| Texto ||
