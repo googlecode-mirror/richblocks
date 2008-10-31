@@ -427,6 +427,8 @@ function buildWindowRightButtonMenu(){
 			trSubframeMenu = document.createElement('TR');
 			trSubframeMenu.id = 'window_tr_frame_menu_'+i+iOpt;
 			trSubframeMenu.setAttribute('menu_reference',trSubframeMenu.id);
+			trSubframeMenu.setAttribute('xml_window_name',menu[i].getElementsByTagName('option')[iOpt].getAttribute('windowTarget'));
+			trSubframeMenu.setAttribute('xml_function_name',menu[i].getElementsByTagName('option')[iOpt].getAttribute('functionTarget'));
 			trSubframeMenu.onmouseover = function(){
 				overMenu(document.getElementById(this.getAttribute('menu_reference')).id);
 			}
@@ -435,10 +437,19 @@ function buildWindowRightButtonMenu(){
 			}
 			trSubframeMenu.onmousedown = function(){
 				outMenu(this.id);
+				if(this.getAttribute('xml_function_name')){
+					for(i=0;i<xml_functions.length;i++){
+						if(xml_functions[i].getAttribute('name') == this.getAttribute('xml_function_name')){
+							alert();
+							exec(this.getAttribute('xml_function_name'),'sdasd');
+						}
+					}
+				}	
+				if(this.getAttribute('xml_window_name')){
+					buildWindow(this.getAttribute('xml_window_name'))	
+				} 
 			}
-			trSubframeMenu.onclick= function(){
-				alert('aaaa');	
-			}
+			
 			tdImgframeMenu = document.createElement('TD');
 			tdImgframeMenu.setAttribute('class','rb_text_frame_menu');
 			tdImgframeMenu.setAttribute('className','rb_text_frame_menu');
