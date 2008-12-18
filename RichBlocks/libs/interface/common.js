@@ -34,6 +34,16 @@
    junto com este programa, se não veja em <http://www.gnu.org/licenses/>.
 */
 
+function loadAppConfiguration(){
+	xmlDoc =loadXmlDocument('conf/application.xml');    	
+	app = xmlDoc.getElementsByTagName("application"); 	 
+	if(!document.all){
+		appname =	app[0].getElementsByTagName('name')[0].textContent + " " + app[0].getElementsByTagName('version')[0].textContent + " " + app[0].getElementsByTagName('comment')[0].textContent; 
+	}else{
+		appname =	app[0].getElementsByTagName('name')[0].text + " " + app[0].getElementsByTagName('version')[0].text + " " + app[0].getElementsByTagName('comment')[0].text;
+	}
+	document.title = appname;  
+}
 
 //Função que retorna o tamanho atual da janela do navegador
 function getSizeWindow() {
@@ -247,7 +257,8 @@ function loadPage(page,windowContentId,method){
    if(method != 'true'){
    		document.getElementById(windowContentId).src = page;
    }else{
-	   ajax();
+   	  	
+   	   ajax();
 	   var url = 'src_application/'+ page;
 	   xmlhttp.open("POST",url,true);
 	   xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8?");
@@ -268,6 +279,7 @@ function loadPage(page,windowContentId,method){
 									}
 	   xmlhttp.send(url);  
 	}
+	
 }
 
 //Função que altera o Plano de Fundo (Parametro: nome da imagem, o diretório é img)
