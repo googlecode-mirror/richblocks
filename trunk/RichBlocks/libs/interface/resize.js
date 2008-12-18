@@ -40,7 +40,7 @@ function resizing(event){
 	if(!event){
 		event = window.event;
 	}
-	
+
 	if(event.clientX - parseInt(document.getElementById(objToResize_ID).style.left) <= 200){
 		document.getElementById(objToResize_ID).style.width= '200px';
 		document.getElementById(objContentToResize_ID).style.width = 200 - 16 + 'px';
@@ -71,6 +71,7 @@ function stopResizing(event){
 	if(!event){
 		event = window.event;
 	}
+
 	if(window.removeEventListener){
 		window.removeEventListener('mousemove', resizing, true);
 		window.removeEventListener('mouseup', stopResizing, true);

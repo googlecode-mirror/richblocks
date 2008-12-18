@@ -37,6 +37,7 @@
 
 /* GLOBALS */
 var tabs = new Array();
+var appname = null;
 var frameMinimizeds;
 var plataform_windows = new Array();
 var plataform_windows_name = new Array();
@@ -53,6 +54,8 @@ var img_back = document.createElement('IMG');
 
 
 function buildPlataform(){
+	
+	loadAppConfiguration();
 	
 	//Frame Invisivisel
 	frameInvisible.style.width = '100%';
@@ -72,7 +75,7 @@ function buildPlataform(){
 	frameBarTop = document.createElement('DIV');
 	frameBarTop.setAttribute('class','frame_bar_top');
 	frameBarTop.setAttribute('className','frame_bar_top');
-	frameBarTop.innerHTML = 'RichBlocks 0.1';
+	frameBarTop.innerHTML = appname;
 
 	// Frame onde ficam os menus
 	frameMenu = document.createElement('DIV');
