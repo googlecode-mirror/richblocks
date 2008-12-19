@@ -187,22 +187,6 @@ function maximized(objWindow,objContent,iptMax){
 	if(document.getElementById(objWindow.id).getAttribute('maximized')== 'true' || document.getElementById(objWindow.id).getAttribute('maximized')== true){
 		restore(objWindow.id,objContent.id);
 		return true;
-		/*
-		alert('MAXIMIZADO - VAI RESTAURAR');
-		objWindow.style.top = objWindow.getAttribute('x') + 'px';
-		//objWindow.style.left = objWindow.getAttribute('y') + 'px';
-		objWindow.style.width = objWindow.getAttribute('original_width') + 'px';
-		objWindow.style.height = objWindow.getAttribute('original_height') + 'px';
-		
-		w = parseInt(objWindow.getAttribute('original_width'));
-		h = parseInt(objWindow.getAttribute('original_height'));
-		w = w - 16;
-		h = h - 60;
-
-		objContent.style.width = w + 'px';
-		objContent.style.height = h + 'px';		
-		return true;
-		*/
 	}
 	document.getElementById(objWindow.id).setAttribute('maximized',true);
 	document.getElementById(objWindow.id).setAttribute('top',objWindow.offsetTop);
@@ -252,12 +236,55 @@ function disableSelection(target){
 		target.onmousedown=function(){return false}
 }
 
+function retornado(returnedContent, ajaxObject){
+		document.getElementById(ajaxObject.objIdInner).innerHTML= returnedContent;
+}
+function testeAjaxChange(status, ajaxObject){
+	var img_load = document.createElement('IMG');
+	img_load.src = 'img/load.gif';
+		
+	tablelaod = document.createElement("TABLE");
+	tablelaod.setAttribute('width','100%');
+	tablelaod.setAttribute('height','100%');
+		tbdodyload = document.createElement("TBODY");
+			trload = document.createElement("TR");
+				tdload = document.createElement("TD");
+			tdload.setAttribute("align","center");
+					spanload = document.createElement("SPAN");
+					spanload.style.fontFamily = 'verdana';
+					spanload.style.fontSize = '16px';
+					spanload.style.fontWeight = 'bold';
+					spanload.innerHTML = 'Carregando...';
+					nobreak = document.createElement("BR");
+					tdload.appendChild(img_load);
+				tdload.appendChild(nobreak);
+				tdload.appendChild(spanload);
+			trload.appendChild(tdload);
+		tbdodyload.appendChild(trload);
+	tablelaod.appendChild(tbdodyload);	
+	document.getElementById(ajaxObject.objIdInner).appendChild(tablelaod);								  
+}
+
 //Função que carrega uma URL dentro da janela(Parametros: URL,Id da janela, Método:Ajax ou Iframe)
 function loadPage(page,windowContentId,method){
    if(method != 'true'){
    		document.getElementById(windowContentId).src = page;
    }else{
-   	  	
+   	  
+   		var d1= new Ajax();
+		d1.callBack= retornado;
+		d1.url= 'src_application/'+ page;
+		d1.objIdInner = windowContentId;
+		d1.onStateChange= testeAjaxChange;
+		d1.onError= function (status, ajaxObj)
+					{
+						document.getElementById(ajaxObj.objIdInner).innerHTML+= '<br>Erro cod: '+status;
+						return false;
+					}
+		
+		d1.call();
+		
+   	/*
    	   ajax();
 	   var url = 'src_application/'+ page;
 	   xmlhttp.open("POST",url,true);
@@ -278,6 +305,7 @@ function loadPage(page,windowContentId,method){
 										}
 									}
 	   xmlhttp.send(url);  
+	   */
 	}
 	
 }
