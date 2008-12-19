@@ -40,6 +40,8 @@
 
 var objSelecionado = null;
 var mouseOffset = null;
+var flagActiveWindow = null;
+
 function addEvent(obj, evType, fn) { //Função adaptada da original de Christian Heilmann, em http://www.onlinetools.org/articles/unobtrusivejavascript/chapter4.html
 if (typeof obj == "string") {
   if (null == (obj = document.getElementById(obj))) {
@@ -58,6 +60,7 @@ document.onmousemove = function(ev) {
 var ev = ev || window.event;
 var mousePos = mouseCoords(ev);
 if (objSelecionado) {
+	document.getElementById(objSelecionado).setAttribute('draging','true');
 	divBlock.id = 'block_' + document.getElementById(objSelecionado).id;
 	divBlock.style.width = document.getElementById(objSelecionado).style.width;
 	divBlock.style.height = document.getElementById(objSelecionado).style.height;
@@ -65,7 +68,7 @@ if (objSelecionado) {
 	divBlock.style.display = 'block';
 	divBlock.style.left = mousePos.x - mouseOffset.x + 'px';
 	divBlock.style.top = mousePos.y - mouseOffset.y + 'px';
-
+	//alert(document.getElementById(objSelecionado).getAttribute('draging'));
   // Posiciona a janela de acordo com o mouse
   //document.getElementById(objSelecionado).style.left = mousePos.x - mouseOffset.x + 'px';
   //document.getElementById(objSelecionado).style.top = mousePos.y - mouseOffset.y + 'px';
@@ -110,6 +113,7 @@ if (objSelecionado) {
   document.getElementById(objSelecionado).style.margin = '0px';
   return false;
 }else{
+	flagActiveWindow = false;
 	//document.getElementById(objSelecionado).style.left = mousePos.x - mouseOffset.x + 'px';
   	//document.getElementById(objSelecionado).style.top = mousePos.y - mouseOffset.y + 'px';
 }
@@ -139,20 +143,25 @@ return {x: coords.x - left, y: coords.y - top};
 }
 document.onmouseup = function(event) {
 	visibleWindow(objSelecionado,event);
-	objSelecionado = null;
 	divBlock.style.display = 'none';
+	objSelecionado = null;
 }
 
-function visibleWindow(obj,event){
+function visibleWindow(obj,event){	
 	var ev = event || window.event;
 	var mousePos = mouseCoords(ev);
 	try{
-		document.getElementById(obj).style.left = divBlock.style.left;
-  		document.getElementById(obj).style.top = divBlock.style.top;
+		if(document.getElementById(obj).getAttribute('draging') == 'true'){
+			document.getElementById(obj).style.left = divBlock.style.left;
+  			document.getElementById(obj).style.top = divBlock.style.top;
+  			document.getElementById(obj).setAttribute('draging','false');
+		}
 	}catch(error){}
 }
 
 function dragdrop(local_click, caixa_movida) {
+// Desabilta a seleção
+disableSelection(document.getElementById(local_click));
 
 document.getElementById(local_click).style.cursor = 'default';
 addEvent(local_click, 'mousedown', function(ev) {
@@ -160,3 +169,4 @@ addEvent(local_click, 'mousedown', function(ev) {
   mouseOffset = getPosition(objSelecionado, ev);
 });
 }
+

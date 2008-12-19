@@ -164,6 +164,8 @@ function buildPlataform(){
 	
 	//Desabilita o evento selecionar
 	disableSelection(document.body);
+	disableSelection(frameBarTop);
+	disableSelection(frameMenu);
 	
 	// Le o arquivo XML e armazena no array GLOBAL xml_windows
 	loadWindows();
