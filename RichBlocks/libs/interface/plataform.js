@@ -51,10 +51,18 @@ var frameProperties = document.createElement('DIV');
 var frameMinimizeds = document.createElement('DIV');
 var frameSysTray = document.createElement('DIV');
 var img_back = document.createElement('IMG');
+var divBlock = document.createElement('DIV');
 
 function buildPlataform(){
 	
 	loadAppConfiguration();
+	
+	//Div da janela quando arrastada
+	divBlock.style.position = 'absolute';
+	divBlock.style.border = 'dashed 2px';
+	divBlock.style.borderColor = '#AAAAAA'; 
+	divBlock.style.display = 'none';
+	document.body.appendChild(divBlock);
 	
 	//Frame Invisivisel
 	frameInvisible.style.width = '100%';
@@ -101,7 +109,7 @@ function buildPlataform(){
 
 	frameProperties.style.width = '100%';
 	frameProperties.style.height = '100%';
-		img_back.src = 'img/back.jpg';
+		img_back.src = 'img/back_body_image.jpg';
 		img_back.style.width = '100%';
 		img_back.style.height = '100%';
 		img_back.id = 'frame_properties';

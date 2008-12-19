@@ -36,6 +36,8 @@
 
 //by tmferreira - http://www.webly.com.br/tutorial/javascript-e-ajax/7045/drag-and-drop.htm
 
+//Cria DIV temporario
+
 var objSelecionado = null;
 var mouseOffset = null;
 function addEvent(obj, evType, fn) { //Função adaptada da original de Christian Heilmann, em http://www.onlinetools.org/articles/unobtrusivejavascript/chapter4.html
@@ -56,33 +58,43 @@ document.onmousemove = function(ev) {
 var ev = ev || window.event;
 var mousePos = mouseCoords(ev);
 if (objSelecionado) {
-	
+	divBlock.id = 'block_' + document.getElementById(objSelecionado).id;
+	divBlock.style.width = document.getElementById(objSelecionado).style.width;
+	divBlock.style.height = document.getElementById(objSelecionado).style.height;
+	divBlock.style.zIndex = document.getElementById(objSelecionado).style.zIndex + 1;
+	divBlock.style.display = 'block';
+	divBlock.style.left = mousePos.x - mouseOffset.x + 'px';
+	divBlock.style.top = mousePos.y - mouseOffset.y + 'px';
+
   // Posiciona a janela de acordo com o mouse
-  document.getElementById(objSelecionado).style.left = mousePos.x - mouseOffset.x + 'px';
-  document.getElementById(objSelecionado).style.top = mousePos.y - mouseOffset.y + 'px';
+  //document.getElementById(objSelecionado).style.left = mousePos.x - mouseOffset.x + 'px';
+  //document.getElementById(objSelecionado).style.top = mousePos.y - mouseOffset.y + 'px';
   
   //document.getElementById(objSelecionado).setAttribute('x',document.getElementById(objSelecionado).offsetTop);
   //document.getElementById(objSelecionado).setAttribute('y',document.getElementById(objSelecionado).offsetLeft);  
    
   max_top = 72;
-  max_left = - parseInt(document.getElementById(objSelecionado).style.width);
+  max_left = - parseInt(divBlock.style.width);
   max_right =  parseInt(document.body.clientWidth);
   max_down = parseInt(document.body.clientHeight);
-  obj_top = parseInt(document.getElementById(objSelecionado).style.top);
-  obj_left = parseInt(document.getElementById(objSelecionado).style.left);
+  obj_top = parseInt(divBlock.style.top);
+  obj_left = parseInt(divBlock.style.left);
 
   // Controla a posição TOP da janela
   if (obj_top <= max_top){
+	divBlock.style.top = '72px';
 	document.getElementById(objSelecionado).style.top = '72px';
   }
   // Controla a posição LEFT da janela
   if (obj_left <= max_left + 60){
-	document.getElementById(objSelecionado).style.left = max_left + 60 + 'px';
+	//document.getElementById(objSelecionado).style.left = max_left + 60 + 'px';
+	divBlock.style.left = max_left + 60 + 'px';
   }
   
   // Controla a posição RIGHT da janela
-  if (obj_left + parseInt(document.getElementById(objSelecionado).offsetWidth) >= max_right){
-	document.getElementById(objSelecionado).style.left = max_right - parseInt(document.getElementById(objSelecionado).offsetWidth);
+  if (obj_left + parseInt(divBlock.offsetWidth) >= max_right){
+	//document.getElementById(objSelecionado).style.left = max_right - parseInt(document.getElementById(objSelecionado).offsetWidth);
+	divBlock.style.left = max_right - parseInt(divBlock.offsetWidth);
   }
   
   //alert(obj_top);
@@ -90,12 +102,16 @@ if (objSelecionado) {
   // Controla a posição DOWN da janela
   if (obj_top + 50 >= max_down){
 	//alert('a');
-	document.getElementById(objSelecionado).style.top = max_down - 30 + 'px';
+	//document.getElementById(objSelecionado).style.top = max_down - 30 + 'px';
+	divBlock.style.top = max_down - 30 + 'px';
 	//alert(document.getElementById(objSelecionado).style.height);
   }
 
   document.getElementById(objSelecionado).style.margin = '0px';
   return false;
+}else{
+	//document.getElementById(objSelecionado).style.left = mousePos.x - mouseOffset.x + 'px';
+  	//document.getElementById(objSelecionado).style.top = mousePos.y - mouseOffset.y + 'px';
 }
 }
 function mouseCoords(ev){
@@ -121,10 +137,23 @@ left += e.offsetLeft;
 top  += e.offsetTop;
 return {x: coords.x - left, y: coords.y - top};
 }
-document.onmouseup = function() {
+document.onmouseup = function(event) {
+	visibleWindow(objSelecionado,event);
 	objSelecionado = null;
+	divBlock.style.display = 'none';
 }
+
+function visibleWindow(obj,event){
+	var ev = event || window.event;
+	var mousePos = mouseCoords(ev);
+	try{
+		document.getElementById(obj).style.left = divBlock.style.left;
+  		document.getElementById(obj).style.top = divBlock.style.top;
+	}catch(error){}
+}
+
 function dragdrop(local_click, caixa_movida) {
+
 document.getElementById(local_click).style.cursor = 'default';
 addEvent(local_click, 'mousedown', function(ev) {
   objSelecionado = caixa_movida;
