@@ -9,6 +9,7 @@
 			<option name="option2_menu_1" value="Plano de Fundo" windowTarget="change_background" img="background_image.png" shortcut="Alt+PI"></option>
 			<option name="option3_menu_1" value="Ajuda" windowTarget="help" img="help.png" shortcut="Alt+H" separator="true"></option>
 			<option name="option4_menu_1" value="Sobre..." windowTarget="sobre" img="rich_blocks_ico.png" shortcut="Alt+S"></option>
+			<option name="option5_menu_1" value="Teste PHP" windowTarget="testephp" img="rich_blocks_ico.png" shortcut="Alt+S"></option>
 		</menu>
 		
 </MenuInterfaceRia>

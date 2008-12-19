@@ -90,4 +90,26 @@
 		defaultFooter="Sobre RichBlocks">
 	</window>
 	
+	<window name="testephp"
+		title="Teste PHP"
+		description="Teste PHP"
+		defaultTop="130"
+		defaultLeft="300"
+		defaultWidth="350"
+		defaultHeight="550"
+		minWidth="120"
+		minHeight="120" 
+		pageSrc="../../../testes/teste_xml.php"
+		ajax="true"
+		newInstance="true"
+		forceZindex="true"
+		minimize="true"
+		maximize="true"
+		close="true"
+		drag="true"
+		resize="true"
+		posAbsolute="none" 
+		defaultFooter="Teste PHP">
+	</window>
+	
 </WindowInterfaceRia>

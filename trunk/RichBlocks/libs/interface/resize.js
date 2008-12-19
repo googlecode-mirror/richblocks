@@ -51,6 +51,16 @@ function resizing(event){
 		document.getElementById(objContentToResize_ID).style.height = 100 - 46 + 'px';
 		return;
 	}
+	var ev = event || window.event;
+	var mousePos = mouseCoords(ev);
+  	mouseOffset = getPosition(objToResize_ID, ev);	
+	divBlock.id = 'block_' + document.getElementById(objToResize_ID).id;
+	divBlock.style.width = document.getElementById(objToResize_ID).style.width;
+	divBlock.style.height = document.getElementById(objToResize_ID).style.height;
+	divBlock.style.zIndex = document.getElementById(objToResize_ID).style.zIndex + 1;
+	divBlock.style.display = 'block';
+	divBlock.style.left = mousePos.x - mouseOffset.x + 'px';
+	divBlock.style.top = mousePos.y - mouseOffset.y + 'px';
 	document.getElementById(objToResize_ID).style.width= event.clientX - parseInt(document.getElementById(objToResize_ID).style.left);
 	document.getElementById(objToResize_ID).style.height= event.clientY - parseInt(document.getElementById(objToResize_ID).style.top);
 	

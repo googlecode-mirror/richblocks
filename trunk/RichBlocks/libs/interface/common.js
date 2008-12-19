@@ -240,6 +240,7 @@ function retornado(returnedContent, ajaxObject){
 		document.getElementById(ajaxObject.objIdInner).innerHTML= returnedContent;
 }
 function testeAjaxChange(status, ajaxObject){
+	
 	var img_load = document.createElement('IMG');
 	img_load.src = 'img/load.gif';
 		
@@ -283,31 +284,7 @@ function loadPage(page,windowContentId,method){
 					}
 		
 		d1.call();
-		
-   	/*
-   	   ajax();
-	   var url = 'src_application/'+ page;
-	   xmlhttp.open("POST",url,true);
-	   xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8?");
-	   
-	   xmlhttp.onreadystatechange = function() 
-									{
-										if (xmlhttp.readyState == 1)
-										{
-											document.getElementById(windowContentId).innerHTML = 'Carregando...';
-										}
-										if (xmlhttp.readyState == 4)
-										{
-									        var texto = xmlhttp.responseText;
-									        texto = texto.replace(/\+/g," ");
-									        texto = unescape(texto);
-											document.getElementById(windowContentId).innerHTML = texto;
-										}
-									}
-	   xmlhttp.send(url);  
-	   */
 	}
-	
 }
 
 //Função que altera o Plano de Fundo (Parametro: nome da imagem, o diretório é img)
