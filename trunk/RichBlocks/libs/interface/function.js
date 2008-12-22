@@ -43,7 +43,6 @@ function loadFunctions(){
 	}
 }	
 function exec(functionName,params){
-	alert(params);
 	for(i=0;i<xml_functions.length;i++){		
 		if(xml_functions[i].getAttribute('name') == functionName){
 			if(document.all){

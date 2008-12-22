@@ -57,6 +57,7 @@ function constructWindow(XMLwindow){
 	}else{
 		var src = XMLwindow.getAttribute('pageSrc');
 	}
+	
 	if(XMLwindow.getAttribute('newInstance') == 'false'){
 		for(i in plataform_windows_name){
 			if(XMLwindow.getAttribute('name') == i){
@@ -65,7 +66,8 @@ function constructWindow(XMLwindow){
 			}
 		}
 	}
-	
+
+	//alert(XMLwindow.getAttribute('newInstance'));
 	objWindow.setProperties(XMLwindow.getAttribute('name'),
 							XMLwindow.getAttribute('title'),
 							XMLwindow.getAttribute('description'),
@@ -74,8 +76,8 @@ function constructWindow(XMLwindow){
 							XMLwindow.getAttribute('defaultWidth'),
 							XMLwindow.getAttribute('defaultHeight'),
 							src,
-							XMLwindow.getAttribute('footer'),
-							'',
+							XMLwindow.getAttribute('defaultFooter'),
+							XMLwindow.getAttribute('newInstance'),
 							'',
 							XMLwindow.getAttribute('posAbsolute'));
 	objWindow.setActions(eval(XMLwindow.getAttribute('minimize')),eval(XMLwindow.getAttribute('maximize')),eval(XMLwindow.getAttribute('close')),eval(XMLwindow.getAttribute('drag')),eval(XMLwindow.getAttribute('resize')));
@@ -91,7 +93,7 @@ function buildWindow(nameWindow,url){
 	URL_PAGE = url;
 	
 	for(i=0;i<xml_windows.length;i++){		
-		if(xml_windows[i].getAttribute('name') == nameWindow){
+		if(xml_windows[i].getAttribute('name') == nameWindow){			
 			constructWindow(xml_windows[i]);
 				return true;
 		}else{

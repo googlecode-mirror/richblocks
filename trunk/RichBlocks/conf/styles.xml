@@ -35,12 +35,38 @@
    junto com este programa, se não veja em <http://www.gnu.org/licenses/>.
 -->
 
-<application>
-	<name>RichBlocks</name>
-	<version>1.0</version>
-	<comment>Aplicação Teste</comment>
-	<developer>Jaydson Gomes</developer>
-	<date>18/12/2008</date>
-	<icon>img/ico.gif</icon>
-</application>
+<styles>
+	<barapplication>
+		<color></color>
+		<textcolor></textcolor>
+		<fontfamily></fontfamily>
+	</barapplication>
+	
+	<windows>
+		<body color="">
+		</body>
+		<bar coloronfocus="" colornofocus="">
+			<textcolor></textcolor>
+			<fontfamily></fontfamily>
+			<buttoncolor></buttoncolor>
+		</bar>
+		<footer>
+			<textcolor></textcolor>
+			<fontfamily></fontfamily>
+		</footer>
+	</windows>
+	
+	<menu color="" coloronmouseover="">
+		<bar>
+			<color></color>
+			<textcolor></textcolor>
+			<fontfamily></fontfamily>
+		</bar>
+		<submenu>
+			<color></color>
+			<textcolor></textcolor>
+			<fontfamily></fontfamily>
+		</submenu>
+	</menu>
+</styles>
 

@@ -116,6 +116,7 @@ td {
 	padding-top:4px;
 	padding-right:4px;
 	padding-bottom:5px;
+	border-top:2px outset #eeeeee;
 	border-right:2px outset #eeeeee;
 	border-left:2px outset #eeeeee;
 	vertical-align:top;
@@ -159,23 +160,6 @@ td {
 	font-family:tahoma;
 	font-size:11px;
 }
-
-/*******************************
-	TABS
-*******************************/
-	
-.tabs{
-	cursor:pointer;
-	height:80px;
-	float:right;
-	font-weight:bold;
-	font-family:tahoma;
-	padding-right:15px;
-	padding-left:10px;
-	font-size:14px;
-	border:2px outset #eeeeee;
-}
-
 .input_min{
 	float:left;
 	width:17px;

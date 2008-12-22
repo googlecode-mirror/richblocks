@@ -52,6 +52,9 @@ var frameMinimizeds = document.createElement('DIV');
 var frameSysTray = document.createElement('DIV');
 var img_back = document.createElement('IMG');
 var divBlock = document.createElement('DIV');
+var RB_FULL_SCREEN = false;
+var RB_BAR_APPLICATION_DISPLAY = true;
+var RB_BAR_SHORTCUT_DISPLAY = true;
 
 function buildPlataform(){
 	
@@ -64,7 +67,7 @@ function buildPlataform(){
 	divBlock.style.display = 'none';
 	document.body.appendChild(divBlock);
 	
-	//Frame Invisivisel
+	//Frame Invisivisel - DIV preto transparente(para bloquear acesso)
 	frameInvisible.style.width = '100%';
 	frameInvisible.style.height = '100%';
 	frameInvisible.style.position = 'absolute';
@@ -82,6 +85,7 @@ function buildPlataform(){
 	frameBarTop = document.createElement('DIV');
 	frameBarTop.setAttribute('class','frame_bar_top');
 	frameBarTop.setAttribute('className','frame_bar_top');
+	frameBarTop.id = 'frame_bar_top';
 	frameBarTop.innerHTML = appname;
 
 	// Frame onde ficam os menus
@@ -101,6 +105,9 @@ function buildPlataform(){
 	frameButtons.setAttribute('class','frame_buttons');
 	frameButtons.setAttribute('className','frame_buttons');
 	frameButtons.id = 'frame_buttons';
+	frameButtons.oncontextmenu = function(){
+		alert('a');
+	}
 	
 	frameLayout = document.createElement('DIV');
 	frameLayout.setAttribute('class','frame_layout');
@@ -144,6 +151,9 @@ function buildPlataform(){
 	document.body.appendChild(frameMinimizeds);	
 	document.body.appendChild(frameInvisible);	
 	
+	//Detecta o Browser
+	browserDetect();
+		
 	//Aloca o framaMinimizeds sempre na posição correta
 	setMinizeds();
 	
@@ -173,7 +183,6 @@ function buildPlataform(){
 	// Le o arquivo XML e armazena no array GLOBAL xml_functions
 	loadFunctions();
 }
-
 
 //MOUSEDOWN
 document.onmousedown = function(event){		

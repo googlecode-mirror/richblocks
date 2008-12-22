@@ -60,6 +60,16 @@ document.onmousemove = function(ev) {
 var ev = ev || window.event;
 var mousePos = mouseCoords(ev);
 if (objSelecionado) {
+	
+	if(RB_BAR_APPLICATION_DISPLAY && RB_BAR_SHORTCUT_DISPLAY)
+		max_top = 72;
+	if(!RB_BAR_APPLICATION_DISPLAY)
+    	max_top = 50;
+    if(!RB_BAR_SHORTCUT_DISPLAY)
+    	max_top = 45;
+    if(!RB_BAR_APPLICATION_DISPLAY && !RB_BAR_SHORTCUT_DISPLAY)
+    	max_top = 24;
+  	
 	document.getElementById(objSelecionado).setAttribute('draging','true');
 	divBlock.id = 'block_' + document.getElementById(objSelecionado).id;
 	divBlock.style.width = document.getElementById(objSelecionado).style.width;
@@ -68,15 +78,7 @@ if (objSelecionado) {
 	divBlock.style.display = 'block';
 	divBlock.style.left = mousePos.x - mouseOffset.x + 'px';
 	divBlock.style.top = mousePos.y - mouseOffset.y + 'px';
-	//alert(document.getElementById(objSelecionado).getAttribute('draging'));
-  // Posiciona a janela de acordo com o mouse
-  //document.getElementById(objSelecionado).style.left = mousePos.x - mouseOffset.x + 'px';
-  //document.getElementById(objSelecionado).style.top = mousePos.y - mouseOffset.y + 'px';
-  
-  //document.getElementById(objSelecionado).setAttribute('x',document.getElementById(objSelecionado).offsetTop);
-  //document.getElementById(objSelecionado).setAttribute('y',document.getElementById(objSelecionado).offsetLeft);  
-   
-  max_top = 72;
+ 	
   max_left = - parseInt(divBlock.style.width);
   max_right =  parseInt(document.body.clientWidth);
   max_down = parseInt(document.body.clientHeight);
@@ -85,8 +87,8 @@ if (objSelecionado) {
 
   // Controla a posição TOP da janela
   if (obj_top <= max_top){
-	divBlock.style.top = '72px';
-	document.getElementById(objSelecionado).style.top = '72px';
+	divBlock.style.top = max_top;
+	document.getElementById(objSelecionado).style.top = max_top;
   }
   // Controla a posição LEFT da janela
   if (obj_left <= max_left + 60){

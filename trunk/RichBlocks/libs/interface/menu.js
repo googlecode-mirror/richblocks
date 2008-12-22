@@ -105,7 +105,7 @@ function buildMenu(){
 	
 	xmlDoc =loadXmlDocument('conf/menu.xml');    	   // Carrega o arquivo XML com a definição de Menus
 	menu = xmlDoc.getElementsByTagName("menu"); 	   // Variavel menu pega todas as tags <menu> do arquivo XML
-	
+
 		var posTopMenu = 45; // Coltrola a posição TOP do menu
 		
 		// Laço que percorre o Objeto XML e encontra os nodos para formar o Menu
@@ -125,6 +125,10 @@ function buildMenu(){
 				resetRightButtonMenus();
 				
 				//Mostra o menu
+				if(!RB_BAR_APPLICATION_DISPLAY)
+					document.getElementById(this.getAttribute('childSubMenu')).style.top = '23px';
+						else
+							document.getElementById(this.getAttribute('childSubMenu')).style.top = '45px';
 				opacity(this.getAttribute('childSubMenu'), 0, 100, 350);
 				document.getElementById(this.getAttribute('childSubMenu')).style.display = 'block';
 				
