@@ -34,6 +34,7 @@
    junto com este programa, se não veja em <http://www.gnu.org/licenses/>.
 */
 
+//Carrega o XML de configuração
 function loadAppConfiguration(){
 	xmlDoc =loadXmlDocument('conf/application.xml');    	
 	app = xmlDoc.getElementsByTagName("application"); 	 
@@ -45,6 +46,26 @@ function loadAppConfiguration(){
 	document.title = appname;  
 }
 
+//Carrega o XML de estilos
+function loadAppStyles(){
+	
+}
+
+function browserDetect(){
+	var b = navigator.appName;
+	var ua = navigator.userAgent.toLowerCase();
+	
+	Browser = {};
+	
+	Browser.safari = ua.indexOf('safari') > -1;
+	Browser.opera = ua.indexOf('opera') > -1;
+	Browser.ns = !Browser.opera && !Browser.safari && b == 'Netscape';
+	Browser.ie = !Browser.opera && b == 'Microsoft Internet Explorer';
+	Browser.firefox = ua.indexOf('gecko') > -1;
+	
+	delete b;
+	delete ua;
+}
 //Função que retorna o tamanho atual da janela do navegador
 function getSizeWindow() {
    var sizeWindow = new Array();
@@ -194,13 +215,31 @@ function maximized(objWindow,objContent,iptMax){
 	document.getElementById(objWindow.id).setAttribute('w',objWindow.offsetWidth);
 	document.getElementById(objWindow.id).setAttribute('h',objWindow.offsetHeight);
 	
+	var topMax = null;
+	if(RB_BAR_APPLICATION_DISPLAY && RB_BAR_SHORTCUT_DISPLAY){
+		topMax = 72;
+		heightWin = 0;
+	}
+	if(!RB_BAR_APPLICATION_DISPLAY){
+    	topMax = 50;
+    	heightWin = 22;    	
+	}
+    if(!RB_BAR_SHORTCUT_DISPLAY){
+    	topMax = 45;
+    	heightWin = 32;
+    }
+    if(!RB_BAR_APPLICATION_DISPLAY && !RB_BAR_SHORTCUT_DISPLAY){
+    	topMax = 24;
+    	heightWin = 48;
+    }
+	
 	var sizeWindow = getSizeWindow();
-	objWindow.style.top = '72px';
+	objWindow.style.top = topMax;
 	objWindow.style.left = '0px';
 	objWindow.style.width = sizeWindow[0];
 	objContent.style.width = parseInt(sizeWindow[0]) - 5 + 'px';
-	objWindow.style.height = parseInt(sizeWindow[1] - 102 + 'px');
-	objContent.style.height = parseInt(sizeWindow[1] - 148 + 'px');	
+	objWindow.style.height = parseInt(sizeWindow[1] - 102 + heightWin + 'px');
+	objContent.style.height = parseInt(sizeWindow[1] - 148 + + heightWin + 'px');	
 }
 
 //Função responsável aletar a cor da barra da janela quando esta em foco

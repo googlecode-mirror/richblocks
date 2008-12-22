@@ -27,4 +27,32 @@
 		]]>
 	</function>
 	
+	<function name="showTitleApplication">
+		<![CDATA[
+			if(RB_BAR_APPLICATION_DISPLAY){
+				document.getElementById('frame_bar_top').style.display = 'none';
+				document.getElementById('frame_menu').style.top = '0px';
+				document.getElementById('frame_buttons').style.top = '22px';
+				RB_BAR_APPLICATION_DISPLAY = false;
+			}else{
+				document.getElementById('frame_bar_top').style.display = 'block';
+				document.getElementById('frame_menu').style.top = '22px';
+				document.getElementById('frame_buttons').style.top = '43px';
+				RB_BAR_APPLICATION_DISPLAY = true;
+			}
+			
+		]]>
+	</function>
+	
+	<function name="showShortcutBar">
+		<![CDATA[
+			if(RB_BAR_SHORTCUT_DISPLAY){
+				document.getElementById('frame_buttons').style.display = 'none';
+				RB_BAR_SHORTCUT_DISPLAY = false;
+			}else{
+				document.getElementById('frame_buttons').style.display = 'block';
+				RB_BAR_SHORTCUT_DISPLAY = true;
+			}
+		]]>
+	</function>
 </functions>

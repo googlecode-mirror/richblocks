@@ -151,7 +151,7 @@ function Window(method,new_instance,forceZindex) {
 							tdWindowFooterStatus = document.createElement('TD');
 							tdWindowFooterStatus.setAttribute('class','footer');      // FF
 							tdWindowFooterStatus.setAttribute('className','footer');  // IE
-							tdWindowFooterStatus.innerHTML = 'Conclu&iacute;do ';
+							tdWindowFooterStatus.innerHTML = '';
 							tdResize = document.createElement('TD');
 							tdResize.setAttribute('align','right');
 							tdResize.style.backgroundImage = 'url(img/winresize.gif)';
@@ -212,9 +212,7 @@ function Window(method,new_instance,forceZindex) {
 	this.getIdBar = function(){
 		return idBar;
 	}
-	
-	
-	
+		
 	this.setXMLname = function(name){
 		XMLname = name;
 	}
@@ -377,10 +375,13 @@ function Window(method,new_instance,forceZindex) {
 		firstWidth = objDOM_window.style.width;
 		firstHeight = objDOM_window.style.height;
 		tdWindowBarTitle.innerHTML = this.getTitle();
+		tdWindowFooterStatus.innerHTML = this.getFooter();
 		objDOM_windowBar.id = this.getIdBar();
-		objDOM_window.oncontextmenu = function(){
-			windowRightButtonMenu(event);
-		}
+		
+		// Botão direito nas janelas
+		//objDOM_window.oncontextmenu = function(){
+		//	windowRightButtonMenu(event);
+		//}
 		objDOM_window.id = this.getId();
 		objDOM_window.title = this.getTitle();
 		objDOM_Content.id = 'content_' + this.getId();
@@ -411,6 +412,7 @@ function Window(method,new_instance,forceZindex) {
 		this.setTitle(title);
 		this.setDescription(description);
 		this.setTopPosition(top);
+		this.setFooter(footer);
 		this.setLeftPosition(left);
 		this.setWidth(width);
 		this.setHeight(height);
@@ -482,11 +484,12 @@ function Window(method,new_instance,forceZindex) {
 			changeBackgroundWindowBar(objDOM_window.id);
 		}
 		
+		// Botão direito nas janelas
 		//objDOM_windowBar.oncontextmenu = windowRightButtonMenu(objDOM_window);
-		objDOM_windowBar.oncontextmenu = function(event){
-			if (!event ){event = window.event;}
-			windowRightButtonMenu(event,objDOM_window);
-		}
+		//objDOM_windowBar.oncontextmenu = function(event){
+		//	if (!event ){event = window.event;}
+		//	windowRightButtonMenu(event,objDOM_window);
+		//}
 	}
 	
 	//Adiciona Drag-n-Drop(Aqui é feito o teste para ver se a janela é dragavel ou não)
