@@ -50,11 +50,15 @@ var frameInvisible = document.createElement('DIV');
 var frameProperties = document.createElement('DIV');
 var frameMinimizeds = document.createElement('DIV');
 var frameSysTray = document.createElement('DIV');
+var frameDockMenu = document.createElement('DIV'); 
 var img_back = document.createElement('IMG');
 var divBlock = document.createElement('DIV');
 var RB_FULL_SCREEN = false;
 var RB_BAR_APPLICATION_DISPLAY = true;
 var RB_BAR_SHORTCUT_DISPLAY = true;
+var RB_BAR_DOCKMENU_DISPLAY = true;
+var xm = xmb = ov = 0;
+var M = true;
 
 function buildPlataform(){
 	
@@ -106,7 +110,7 @@ function buildPlataform(){
 	frameButtons.setAttribute('className','frame_buttons');
 	frameButtons.id = 'frame_buttons';
 	frameButtons.oncontextmenu = function(){
-		alert('a');
+		//alert('a');
 	}
 	
 	frameLayout = document.createElement('DIV');
@@ -120,8 +124,32 @@ function buildPlataform(){
 		img_back.style.width = '100%';
 		img_back.style.height = '100%';
 		img_back.id = 'frame_properties';
+		
 	frameProperties.appendChild(img_back);
 	
+	
+	// DIV onde fica o DockMenu
+	frameDockMenu.style.width = '100%';
+	frameDockMenu.style.height = '30px';
+	frameDockMenu.id = 'frame_dock_menu';
+	frameDockMenu.setAttribute('align','center');
+	frameDockMenu.style.position = 'absolute';
+	
+	// DIV onde fica a legenda do DockMenu
+	dockLegendDock = document.createElement('DIV');
+	dockLegendDock.setAttribute('align','center');
+	dockLegendDock.id = 'legend';
+	
+	// DIV onde ficam as imagens do DockMenu
+	dockMenu = document.createElement('DIV');
+	dockMenu.id = 'dock';
+	dockMenu.style.zIndex = '1000000';
+	dockMenu.style.verticalAlign = 'top';
+	
+	frameDockMenu.appendChild(dockLegendDock);
+	frameDockMenu.appendChild(dockMenu);
+	
+	// DIV onde ficam as janelas minimizadas
 	frameMinimizeds.id = 'frame_minimizeds';
 	frameMinimizeds.style.width = '100%';
 	frameMinimizeds.style.height = '30px';
@@ -132,6 +160,7 @@ function buildPlataform(){
 	frameMinimizeds.style.fontSize = '11px';
 	frameMinimizeds.style.padding = '2px';
 	
+	// DIV onde fica o SYSTRAY
 	frameSysTray.id = 'frame_systray';
 	frameSysTray.style.width = '100px';
 	frameSysTray.style.paddingLeft = '42px';
@@ -149,7 +178,8 @@ function buildPlataform(){
 	document.body.appendChild(frameButtons);
 	document.body.appendChild(frameProperties);	
 	document.body.appendChild(frameMinimizeds);	
-	document.body.appendChild(frameInvisible);	
+	document.body.appendChild(frameInvisible);
+	document.body.appendChild(frameDockMenu);
 	
 	//Detecta o Browser
 	browserDetect();
@@ -164,9 +194,14 @@ function buildPlataform(){
 	buildMenu();
 	buildRightButtonMenus();
 	buildWindowRightButtonMenu();
+	buildDockMenu();
+	buildIcons();
+	buildContextMenuIcon();
 	
 	// Relógio
 	clock();
+	
+	setDockMenu();
 	
 	// Botao direito
 	document.oncontextmenu = rightButtonMenu;
@@ -195,10 +230,12 @@ document.onmousedown = function(event){
 		id = id.split('_');
 		if(id[0] == 'menu')
 			return false;
+			
 		hiddenMenus();
 		activeMenu = false;
 		resetStyleMenus();
 		resetRightButtonMenus();
+		hiddenLegendInnerHTML();
 }
 
 //KEYDOWN

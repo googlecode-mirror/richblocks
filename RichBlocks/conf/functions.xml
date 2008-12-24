@@ -55,4 +55,17 @@
 			}
 		]]>
 	</function>
+	
+	<function name="showDockMenuBar">
+		<![CDATA[
+			if(RB_BAR_DOCKMENU_DISPLAY){
+				document.getElementById('frame_dock_menu').style.display = 'none';
+				RB_BAR_DOCKMENU_DISPLAY = false;
+			}else{
+				document.getElementById('frame_dock_menu').style.display = 'block';
+				RB_BAR_DOCKMENU_DISPLAY = true;
+			}
+		]]>
+	</function>
+	
 </functions>

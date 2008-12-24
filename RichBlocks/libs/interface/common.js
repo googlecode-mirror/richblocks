@@ -96,6 +96,7 @@ function setMinizeds(){
 	
 	topMinimizeds = parseInt(sizeWindow[1]) - 28 + 'px';
 	frameMinimizeds.style.top = topMinimizeds;
+	frameDockMenu.style.top = parseInt(sizeWindow[1]) - 60 + 'px';
 	
 	for(i=0;i<frameMinimizeds.childNodes.length;i++){
 		count_size += parseInt(frameMinimizeds.childNodes[i].style.width);
@@ -120,6 +121,20 @@ function setSysTrayPosition(){
 	document.getElementById('frame_systray').style.left = parseInt(sizeWindow[0]) - 78 + 'px'; // 100 é o tamanho do elemento sysTray
 }
 
+// Mousemove do dockmenu
+function dockMenuMove(ev){
+	if(window.event) ev=window.event;
+		xm = (ev.x || ev.clientX);
+		if(xm!=xmb){
+			M = true;
+			xmb = xm;
+		}
+		ov = (ev.target)?ev.target:((ev.srcElement)?ev.srcElement:null);
+}
+
+function hiddenLegendInnerHTML(){
+	document.getElementById('legend').innerHTML = '';
+}
 //Função responsável por fazer o efeito de minimizar a janela
 function minimized(objWindow){
 	
@@ -267,12 +282,14 @@ function changeBackgroundWindowBar(id){
 
 // Função que desbilita a seleção do mouse
 function disableSelection(target){
-	if (typeof target.onselectstart!="undefined") //IE route
-		target.onselectstart=function(){return false}
-	else if (typeof target.style.MozUserSelect!="undefined") //Firefox route
-		target.style.MozUserSelect="none"
-	else //All other route (ie: Opera)
-		target.onmousedown=function(){return false}
+	try{
+		if (typeof target.onselectstart!="undefined") //IE route
+			target.onselectstart=function(){return false}
+		else if (typeof target.style.MozUserSelect!="undefined") //Firefox route
+			target.style.MozUserSelect="none"
+		else //All other route (ie: Opera)
+			target.onmousedown=function(){return false}
+	}catch(e){}
 }
 
 function retornado(returnedContent, ajaxObject){

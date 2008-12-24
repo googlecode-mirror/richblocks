@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!--
+/* 
    Copyright 2008 Jaydson Gomes - RichBlocks  
    
    This file is part of the program RichBlocks
@@ -33,27 +32,44 @@
 
    Você deve ter recebido uma cópia da Licença Pública Geral GNU
    junto com este programa, se não veja em <http://www.gnu.org/licenses/>.
--->
+*/
 
-<MenuInterfaceRia>
-		
-		<!--RichTools-->
-		<menu name="menu_1" value="RichTools" img="img.png">
-			<option name="option1_menu_1" value="Google" windowTarget="google" img="google.gif" shortcut="Alt+G"></option>
-			<option name="option2_menu_1" value="Plano de Fundo" windowTarget="change_background" img="background_image.png" shortcut="Alt+PI"></option>
-			<option name="option3_menu_1" value="Ajuda" windowTarget="help" img="help.png" shortcut="Alt+H" separator="true"></option>
-			<option name="option4_menu_1" value="Sobre..." windowTarget="sobre" img="rich_blocks_ico.png" shortcut="Alt+S"></option>
-		</menu>
-		
-		<!--DockMenu-->
-		<dockmenu>
-			<option name="dock_option1_menu_1" value="Home" windowTarget="google" img="home.png"></option>
-			<option name="dock_option2_menu_1" value="E-mail" windowTarget="google" img="email.png"></option>
-			<option name="dock_option3_menu_1" value="HIstórico" windowTarget="google" img="history.png"></option>
-			<option name="dock_option4_menu_1" value="Calendário" windowTarget="google" img="calendar.png"></option>
-			<option name="dock_option5_menu_1" value="Links" windowTarget="google" img="link.png"></option>
-			<option name="dock_option6_menu_1" value="Portifolio" windowTarget="google" img="portfolio.png"></option>
-			<option name="dock_option7_menu_1" value="RSS" windowTarget="google" img="rss.png"></option>
-		</dockmenu>
-		
-</MenuInterfaceRia>
+function buildIcons(){	
+	var xmlDoc =loadXmlDocument('conf/icon.xml');    	  
+	var icons = xmlDoc.getElementsByTagName("icon");
+	
+	for(var i=0;i<icons.length;i++){
+		var ico = new icon(icons[i].getAttribute('name'),icons[i].getAttribute('value'),'img/'+ icons[i].getAttribute('img')+'',icons[i].getAttribute('top'),icons[i].getAttribute('left'),icons[i].getAttribute('windowTarget')); 
+	}
+}
+
+function icon(name,value,img,top,left,window){
+	
+	var icone = document.createElement('DIV');
+	icone.id = 'richblocks_icon_'+name;
+	icone.style.width = '45px';
+	icone.setAttribute('window',window);
+	icone.style.height = '45px';
+	icone.style.position = 'absolute';
+	icone.style.top = top + 'px';
+	icone.style.left = left + 'px';
+	icone.style.backgroundImage = 'url('+img+')';
+	icone.style.backgroundRepeat = 'no-repeat';
+	icone.ondblclick = function(){
+		buildWindow(window);
+	}
+	icone.oncontextmenu = function(event){
+		contextMenuIcon(event,icone);
+	}
+	
+	var iconeLabel = document.createElement('DIV');
+	iconeLabel.style.fontFamily = 'tahoma';
+	iconeLabel.style.fontSize = '11px';
+	iconeLabel.style.paddingTop = '38px';
+	iconeLabel.setAttribute('align','center');
+	iconeLabel.innerHTML = value;
+	icone.appendChild(iconeLabel);
+	
+	document.body.appendChild(icone);
+	dragdrop(icone.id,icone.id);
+}
