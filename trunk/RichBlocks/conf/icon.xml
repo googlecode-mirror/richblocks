@@ -35,25 +35,9 @@
    junto com este programa, se não veja em <http://www.gnu.org/licenses/>.
 -->
 
-<MenuInterfaceRia>
-		
-		<!--RichTools-->
-		<menu name="menu_1" value="RichTools" img="img.png">
-			<option name="option1_menu_1" value="Google" windowTarget="google" img="google.gif" shortcut="Alt+G"></option>
-			<option name="option2_menu_1" value="Plano de Fundo" windowTarget="change_background" img="background_image.png" shortcut="Alt+PI"></option>
-			<option name="option3_menu_1" value="Ajuda" windowTarget="help" img="help.png" shortcut="Alt+H" separator="true"></option>
-			<option name="option4_menu_1" value="Sobre..." windowTarget="sobre" img="rich_blocks_ico.png" shortcut="Alt+S"></option>
-		</menu>
-		
-		<!--DockMenu-->
-		<dockmenu>
-			<option name="dock_option1_menu_1" value="Home" windowTarget="google" img="home.png"></option>
-			<option name="dock_option2_menu_1" value="E-mail" windowTarget="google" img="email.png"></option>
-			<option name="dock_option3_menu_1" value="HIstórico" windowTarget="google" img="history.png"></option>
-			<option name="dock_option4_menu_1" value="Calendário" windowTarget="google" img="calendar.png"></option>
-			<option name="dock_option5_menu_1" value="Links" windowTarget="google" img="link.png"></option>
-			<option name="dock_option6_menu_1" value="Portifolio" windowTarget="google" img="portfolio.png"></option>
-			<option name="dock_option7_menu_1" value="RSS" windowTarget="google" img="rss.png"></option>
-		</dockmenu>
-		
-</MenuInterfaceRia>
+<icons>
+	<icon name="iconhome" value="Home" img="home_icon.png" top="100" left="45" windowTarget="google"></icon>		
+	<icon name="iconteste" value="Home" img="home_icon.png" top="195" left="45" windowTarget="google"></icon>	
+</icons>
+
+

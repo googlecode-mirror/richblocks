@@ -36,7 +36,6 @@
 
 //by tmferreira - http://www.webly.com.br/tutorial/javascript-e-ajax/7045/drag-and-drop.htm
 
-//Cria DIV temporario
 
 var objSelecionado = null;
 var mouseOffset = null;
@@ -57,8 +56,13 @@ if (obj.attachEvent) {
 }
 }
 document.onmousemove = function(ev) {
-var ev = ev || window.event;
-var mousePos = mouseCoords(ev);
+	
+	var ev = ev || window.event;
+	var mousePos = mouseCoords(ev);
+	
+	//mousemove do DockMenu
+	dockMenuMove(ev);
+
 if (objSelecionado) {
 	
 	if(RB_BAR_APPLICATION_DISPLAY && RB_BAR_SHORTCUT_DISPLAY)
