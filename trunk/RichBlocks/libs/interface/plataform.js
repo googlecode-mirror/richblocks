@@ -41,6 +41,7 @@ var appname = null;
 var frameMinimizeds;
 var plataform_windows = new Array();
 var plataform_windows_name = new Array();
+var plataform_icons = new Array();
 var xml_windows = new Array();
 var xml_functions = new Array();
 var window_z_index = 0;
@@ -51,6 +52,7 @@ var frameProperties = document.createElement('DIV');
 var frameMinimizeds = document.createElement('DIV');
 var frameSysTray = document.createElement('DIV');
 var frameDockMenu = document.createElement('DIV'); 
+var	frameBarTop = document.createElement('DIV');
 var img_back = document.createElement('IMG');
 var divBlock = document.createElement('DIV');
 var RB_FULL_SCREEN = false;
@@ -61,8 +63,6 @@ var xm = xmb = ov = 0;
 var M = true;
 
 function buildPlataform(){
-	
-	loadAppConfiguration();
 	
 	//Div da janela quando arrastada
 	divBlock.style.position = 'absolute';
@@ -86,11 +86,9 @@ function buildPlataform(){
 	frameInvisible.style.backgroundColor = '#000000';
 	
 	// Barra do Topo
-	frameBarTop = document.createElement('DIV');
 	frameBarTop.setAttribute('class','frame_bar_top');
 	frameBarTop.setAttribute('className','frame_bar_top');
 	frameBarTop.id = 'frame_bar_top';
-	frameBarTop.innerHTML = appname;
 
 	// Frame onde ficam os menus
 	frameMenu = document.createElement('DIV');
@@ -110,7 +108,6 @@ function buildPlataform(){
 	frameButtons.setAttribute('className','frame_buttons');
 	frameButtons.id = 'frame_buttons';
 	frameButtons.oncontextmenu = function(){
-		//alert('a');
 	}
 	
 	frameLayout = document.createElement('DIV');
@@ -134,19 +131,26 @@ function buildPlataform(){
 	frameDockMenu.id = 'frame_dock_menu';
 	frameDockMenu.setAttribute('align','center');
 	frameDockMenu.style.position = 'absolute';
+	frameDockMenu.onmouseout = function(){
+		hiddenLegendInnerHTML();
+	}
 	
 	// DIV onde fica a legenda do DockMenu
 	dockLegendDock = document.createElement('DIV');
 	dockLegendDock.setAttribute('align','center');
+	dockLegendDock.style.position= 'absolute';
+	//dockLegendDock.style.width= '500px';
+	//dockLegendDock.style.zIndex = '99999999';
 	dockLegendDock.id = 'legend';
+	//dockLegendDock.innerHTML = 'sdklsah fnhas jkfhsdjkhfjk<br>lszdhfjksdg<br>hfjkhsdjklfhsdl<br>fhjsdhfsdkl<br>';
 	
 	// DIV onde ficam as imagens do DockMenu
 	dockMenu = document.createElement('DIV');
 	dockMenu.id = 'dock';
-	dockMenu.style.zIndex = '1000000';
+	dockMenu.style.zIndex = '10000';
 	dockMenu.style.verticalAlign = 'top';
 	
-	frameDockMenu.appendChild(dockLegendDock);
+	document.body.appendChild(dockLegendDock);
 	frameDockMenu.appendChild(dockMenu);
 	
 	// DIV onde ficam as janelas minimizadas
@@ -159,6 +163,7 @@ function buildPlataform(){
 	frameMinimizeds.style.fontFamily = 'tahoma';
 	frameMinimizeds.style.fontSize = '11px';
 	frameMinimizeds.style.padding = '2px';
+	frameMinimizeds.style.zIndex = '10001';
 	
 	// DIV onde fica o SYSTRAY
 	frameSysTray.id = 'frame_systray';
@@ -193,10 +198,11 @@ function buildPlataform(){
 	// Constroi o menu superior, os menus de botao direito da plataforma e os menus de botão direito de cada janela
 	buildMenu();
 	buildRightButtonMenus();
-	buildWindowRightButtonMenu();
+	//buildWindowRightButtonMenu();
 	buildDockMenu();
 	buildIcons();
 	buildContextMenuIcon();
+	buildContextDockMenu();
 	
 	// Relógio
 	clock();
@@ -211,12 +217,16 @@ function buildPlataform(){
 	disableSelection(document.body);
 	disableSelection(frameBarTop);
 	disableSelection(frameMenu);
+	disableSelection(frameDockMenu);
 	
 	// Le o arquivo XML e armazena no array GLOBAL xml_windows
 	loadWindows();
 	
 	// Le o arquivo XML e armazena no array GLOBAL xml_functions
 	loadFunctions();
+	
+	//Carrega as configurações do Sistema
+	loadAppConfiguration();
 }
 
 //MOUSEDOWN

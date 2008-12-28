@@ -35,13 +35,18 @@ function dock(dock, sMin, sMax)
 			for(var i=0;i<N;i++)
 			{
 				var o = icons[i];
-				var W = parseInt(o.style.width);
+				var W = parseInt(o.style.width);				
 				if(ov && ov.className=="dockicon")
 				{
 					if(ov!=ovk)
 					{
 						ovk=ov;
 						document.getElementById("legend").innerHTML = ov.lang;
+						//document.getElementById("legend").style.top = parseInt(document.getElementById('frame_dock_menu').style.top) + 20;
+						//document.getElementById("legend").style.left = ov.offsetLeft;
+						//document.getElementById("legend").style.width = ov.offsetWidth;
+						//alert(document.getElementById("legend").style.top + document.getElementById("legend").innerHTML);
+						//alert(ov.offsetTop);
 					}
 					if(M) W = Math.max((s*Math.cos(((pxLeft(o)+W/2)-xm)/sMax)),sMin);
 					s = Math.min(sMax,s+1);

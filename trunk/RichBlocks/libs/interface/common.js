@@ -37,13 +37,16 @@
 //Carrega o XML de configuração
 function loadAppConfiguration(){
 	xmlDoc =loadXmlDocument('conf/application.xml');    	
-	app = xmlDoc.getElementsByTagName("application"); 	 
+	app = xmlDoc.getElementsByTagName("application");
 	if(!document.all){
 		appname =	app[0].getElementsByTagName('name')[0].textContent + " " + app[0].getElementsByTagName('version')[0].textContent + " " + app[0].getElementsByTagName('comment')[0].textContent; 
 	}else{
 		appname =	app[0].getElementsByTagName('name')[0].text + " " + app[0].getElementsByTagName('version')[0].text + " " + app[0].getElementsByTagName('comment')[0].text;
 	}
+	frameBarTop.innerHTML = appname;
 	document.title = appname;  
+	
+	exec(app[0].getAttribute('onload'),'');
 }
 
 //Carrega o XML de estilos
@@ -66,6 +69,7 @@ function browserDetect(){
 	delete b;
 	delete ua;
 }
+
 //Função que retorna o tamanho atual da janela do navegador
 function getSizeWindow() {
    var sizeWindow = new Array();
@@ -124,17 +128,34 @@ function setSysTrayPosition(){
 // Mousemove do dockmenu
 function dockMenuMove(ev){
 	if(window.event) ev=window.event;
-		xm = (ev.x || ev.clientX);
-		if(xm!=xmb){
-			M = true;
-			xmb = xm;
-		}
-		ov = (ev.target)?ev.target:((ev.srcElement)?ev.srcElement:null);
+	xm = (ev.x || ev.clientX);
+	if(xm!=xmb){
+		M = true;
+		xmb = xm;
+	}
+	ov = (ev.target)?ev.target:((ev.srcElement)?ev.srcElement:null);
+	
+	getSizeWindow();
+	tamanhoTelaMenosPosMouse = sizeWindow[1] - ev.clientY; 
+	calc = sizeWindow[1] + tamanhoTelaMenosPosMouse;
+	pos = calc - (parseInt(document.getElementById('frame_dock_menu').style.height) + 250);
+	//alert(document.getElementById('frame_dock_menu').style.top);
+	if(pos >= parseInt(sizeWindow[1]) - 70){
+		document.getElementById('frame_dock_menu').style.top = pos + 'px';
+	}else{
+		document.getElementById('frame_dock_menu').style.top = parseInt(sizeWindow[1]) - 70;
+	}
+}
+function displayLegend(event){
+	document.getElementById("legend").style.top = parseInt(document.getElementById('frame_dock_menu').style.top) + 20;
+	document.getElementById("legend").style.left = ov.offsetLeft;
+	document.getElementById("legend").style.width = ov.offsetWidth;
 }
 
 function hiddenLegendInnerHTML(){
 	document.getElementById('legend').innerHTML = '';
 }
+
 //Função responsável por fazer o efeito de minimizar a janela
 function minimized(objWindow){
 	

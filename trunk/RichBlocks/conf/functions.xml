@@ -68,4 +68,15 @@
 		]]>
 	</function>
 	
+	<function name="organizeIcons">
+		<![CDATA[
+			reloadIcons();
+		]]>
+	</function>
+	
+	<function name="loadPrefs">
+		<![CDATA[
+			//buildWindow('change_background');
+		]]>
+	</function>
 </functions>
