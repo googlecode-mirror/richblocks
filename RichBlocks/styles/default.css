@@ -192,6 +192,7 @@ td {
 	width: 100%;
 	text-align: center;
 	left: 0px;
+	float:left;
 }
 #dock a:visited{
 	text-decoration: none;
@@ -205,9 +206,10 @@ td {
 	width: 0px;
 }
 #legend {
+	float:left;
 	position: absolute;
 	left: 0px;
-	bottom: 82px;
+	bottom: 15px;
 	width: 100%;
 	font-family: arial;
 	font-weight: bold;

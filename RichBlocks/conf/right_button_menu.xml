@@ -16,5 +16,6 @@
 			<option name="option1_menu3" value="Alterar plano de fundo" windowTarget="change_background" img="background_image.png"></option>
 			<option name="option1_menu3"  value="Ajuda"  windowTarget="help"  img="help.png" separator="true"></option>
 			<option name="option1_menu3"  value="Sobre..."  windowTarget="sobre"  img="rich_blocks_ico.png"></option>
+			<option name="option1_menu3"  value="Organizar Icones"  functionTarget="organizeIcons"  img="mini_browser.png"></option>
 		</menu>
 </rightButtonMenu>

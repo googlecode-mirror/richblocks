@@ -43,7 +43,7 @@ function loadFunctions(){
 	}
 }	
 function exec(functionName,params){
-	for(i=0;i<xml_functions.length;i++){		
+	for(i=0;i<xml_functions.length;i++){
 		if(xml_functions[i].getAttribute('name') == functionName){
 			if(document.all){
 				eval(xml_functions[i].text);
@@ -52,7 +52,9 @@ function exec(functionName,params){
 			}
 				return true;
 		}else{
-			  error = 'Erro ao tentar encontrar a função com o nome "'+functionName+'". \nVerifique no arquivo funcions.xml se existe alguma função com este nome.';
+			  try{
+			  	var error = 'Erro ao tentar encontrar a função com o nome "'+functionName+'". \nVerifique no arquivo funcions.xml se existe alguma função com este nome.';
+			  }catch(e){}
 		}
 	}	
 	if(error){

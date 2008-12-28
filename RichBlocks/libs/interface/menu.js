@@ -276,6 +276,7 @@ function resetRightButtonMenus(){
 		}
 	}
 	document.getElementById('context_menu_icon_temp').style.display = 'none';
+	document.getElementById('context_dockmenu_temp').style.display = 'none';
 }
 
 //Aloca o botão direito conforme a posição clicado na janela
@@ -482,15 +483,149 @@ function buildDockMenu(){
 	var optionsdock = xmlDoc.getElementsByTagName("dockmenu"); 	   // Variavel menu pega todas as tags <dockmenu> do arquivo XML
 	for(var i=0;i < optionsdock[0].getElementsByTagName('option').length;i++){
 		windowTarget = optionsdock[0].getElementsByTagName('option')[i].getAttribute('windowTarget');
-		dockMenu.innerHTML += '<a href="#" onclick="buildWindow(\''+windowTarget+'\')"> <img src="img/'+ optionsdock[0].getElementsByTagName('option')[i].getAttribute('img')+ '" lang="'+ optionsdock[0].getElementsByTagName('option')[i].getAttribute('value') +'" </a>';
+		dockMenu.innerHTML += '<a href="#" onclick="buildWindow(\''+windowTarget+'\')"> <img onmousemove="displayLegend(event)" oncontextmenu="contextDockMenu(event,this)" id="img_'+optionsdock[0].getElementsByTagName('option')[i].getAttribute('name')+'" src="img/'+ optionsdock[0].getElementsByTagName('option')[i].getAttribute('img')+ '" lang="'+ optionsdock[0].getElementsByTagName('option')[i].getAttribute('value') +'"</a>';
+		//dragdrop(document.getElementById(optionsdock[0].getElementsByTagName('option')[i].getAttribute('name')).id,'img_'+document.getElementById(optionsdock[0].getElementsByTagName('option')[i].getAttribute('name')).id);
+		//dragdrop(document.getElementById(optionsdock[0].getElementsByTagName('option')[i].getAttribute('name').id),optionsdock[0].getElementsByTagName('option')[i].getAttribute('name').id);
 	}
 }
 
 // Instancia o DockMenu
 function setDockMenu(){
-	dock = new dock("dock", 48, 80);
+	
+	dock = new dock("dock", 38, 100);
 	setInterval("dock.run()", 16);
 }
+
+function buildContextDockMenu(){
+	//alert(imgId);
+	//document.getElementById(imgId).style.display = 'none';
+	
+	contextDockMenuTemp = document.createElement('DIV');
+	contextDockMenuTemp .setAttribute('class','rb_frame_menu');		
+	contextDockMenuTemp .setAttribute('className','rb_frame_menu');
+	contextDockMenuTemp.id = 'context_dockmenu_temp';
+	contextDockMenuTemp.style.position = 'absolute';
+	contextDockMenuTemp.style.fontFamily = 'tahoma';
+	contextDockMenuTemp.style.fontSize = '11px';
+	contextDockMenuTemp.style.display = 'none';
+	
+		tableSubframeDockMenu = document.createElement('TABLE');
+		tableSubframeDockMenu.setAttribute('cellspacing','0');
+		tBodySubFrameDockMenu = document.createElement('TBODY');
+		trSubframeDockMenu = document.createElement('TR');
+		trSubframeDockMenu.id = 'trSubframeDockMenu';
+		trSubframeDockMenu.setAttribute('menu_reference',trSubframeDockMenu.id);
+			
+		trSubframeDockMenu2 = document.createElement('TR');
+		trSubframeDockMenu2.id = 'trSubframeDockMenu2';
+		trSubframeDockMenu2.setAttribute('menu_reference',trSubframeDockMenu2.id);
+		
+		trSubframeDockMenu3 = document.createElement('TR');
+		trSubframeDockMenu3.id = 'trSubframeMenu3';
+		trSubframeDockMenu3.setAttribute('menu_reference',trSubframeDockMenu3.id);
+			
+		tdImgframeDockMenu = document.createElement('TD');
+		tdImgframeDockMenu.setAttribute('class','rb_text_frame_menu');
+		tdImgframeDockMenu.setAttribute('className','rb_text_frame_menu');
+			imgFrameDockMenu = document.createElement('IMG');
+			imgFrameDockMenu.src = 'img/open_window.png';
+		tdImgframeDockMenu.appendChild(imgFrameDockMenu);
+		tdTextFrameDockMenu = document.createElement('TD');			
+		tdTextFrameDockMenu.setAttribute('class','rb_text_frame_menu');
+		tdTextFrameDockMenu.setAttribute('className','rb_text_frame_menu');
+		tdTextFrameDockMenu.style.paddingLeft = '6px';
+		tdTextFrameDockMenu.innerHTML = 'Abrir';
+		
+		tdImgframeDockMenu2 = document.createElement('TD');
+		tdImgframeDockMenu2.setAttribute('class','rb_text_frame_menu');
+		tdImgframeDockMenu2.setAttribute('className','rb_text_frame_menu');
+			imgFrameDockMenu2 = document.createElement('IMG');
+			imgFrameDockMenu2.src = 'img/delete.png';
+		tdImgframeDockMenu2.appendChild(imgFrameDockMenu2);
+		tdTextFrameDockMenu2 = document.createElement('TD');			
+		tdTextFrameDockMenu2.setAttribute('class','rb_text_frame_menu');
+		tdTextFrameDockMenu2.setAttribute('className','rb_text_frame_menu');
+		tdTextFrameDockMenu2.style.paddingLeft = '6px';
+		tdTextFrameDockMenu2.innerHTML = 'Excluir';
+		
+		tdImgframeDockMenu3 = document.createElement('TD');
+		tdImgframeDockMenu3.setAttribute('class','rb_text_frame_menu');
+		tdImgframeDockMenu3.setAttribute('className','rb_text_frame_menu');
+			imgFrameDockMenu3 = document.createElement('IMG');
+			imgFrameDockMenu3.src = 'img/delete.png';
+		tdImgframeDockMenu3.appendChild(imgFrameDockMenu3);
+		tdTextFrameDockMenu3 = document.createElement('TD');			
+		tdTextFrameDockMenu3.setAttribute('class','rb_text_frame_menu');
+		tdTextFrameDockMenu3.setAttribute('className','rb_text_frame_menu');
+		tdTextFrameDockMenu3.style.paddingLeft = '6px';
+		tdTextFrameDockMenu3.innerHTML = 'Mover para o Desktop';
+		
+		trSubframeDockMenu.appendChild(tdImgframeDockMenu);
+		trSubframeDockMenu.appendChild(tdTextFrameDockMenu);
+		trSubframeDockMenu2.appendChild(tdImgframeDockMenu2);
+		trSubframeDockMenu2.appendChild(tdTextFrameDockMenu2);
+		trSubframeDockMenu3.appendChild(tdImgframeDockMenu3);
+		trSubframeDockMenu3.appendChild(tdTextFrameDockMenu3);
+		tBodySubFrameDockMenu.appendChild(trSubframeDockMenu);
+		tBodySubFrameDockMenu.appendChild(trSubframeDockMenu2);
+		tBodySubFrameDockMenu.appendChild(trSubframeDockMenu3);
+		tableSubframeDockMenu.appendChild(tBodySubFrameDockMenu);
+	contextDockMenuTemp.appendChild(tableSubframeDockMenu);
+	
+	document.getElementById('plataform').appendChild(contextDockMenuTemp);
+	
+}
+
+function contextDockMenu(event,obj){
+	hiddenMenus();
+	if ( !event ){event = window.event;}	
+	var target = event.target ? event.target : event.srcElement;
+	
+	if(event.which == 3 || event.button == '0'){
+		trSubframeDockMenu.onmouseover = function(){
+			overMenu(document.getElementById(this.getAttribute('menu_reference')).id);
+		}
+		trSubframeDockMenu.onmouseout = function(){
+			outMenu(document.getElementById(this.getAttribute('menu_reference')).id);
+		}
+		trSubframeDockMenu.onmousedown = function(){
+			outMenu(this.id);
+			buildWindow(obj.getAttribute('window'));
+		}
+		
+		trSubframeDockMenu2.onmouseover = function(){
+			overMenu(document.getElementById(this.getAttribute('menu_reference')).id);
+		}
+		trSubframeDockMenu2.onmouseout = function(){
+			outMenu(document.getElementById(this.getAttribute('menu_reference')).id);
+		}
+		trSubframeDockMenu2.onmousedown = function(){
+			outMenu(this.id);
+			if(confirm('Tem certeza que deseja excluir este icone?')){
+				toremove = document.getElementById(obj.id);
+				toremove.parentNode.removeChild(toremove);
+				//document.removeChild(document.getElementById(obj.id));	
+			}else{
+				return false;
+			}
+		}
+		trSubframeDockMenu3.onmouseover = function(){
+			overMenu(document.getElementById(this.getAttribute('menu_reference')).id);
+		}
+		trSubframeDockMenu3.onmouseout = function(){
+			outMenu(document.getElementById(this.getAttribute('menu_reference')).id);
+		}
+		trSubframeDockMenu3.onmousedown = function(){
+			outMenu(this.id);
+			alert('Mover para o Desktop');
+		}
+		
+		document.getElementById('context_dockmenu_temp').style.display = 'block';
+		document.getElementById('context_dockmenu_temp').style.top = event.clientY;
+		document.getElementById('context_dockmenu_temp').style.left = event.clientX;
+	}
+}
+
 
 function buildContextMenuIcon(){
 

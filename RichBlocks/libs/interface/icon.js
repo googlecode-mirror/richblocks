@@ -39,7 +39,14 @@ function buildIcons(){
 	var icons = xmlDoc.getElementsByTagName("icon");
 	
 	for(var i=0;i<icons.length;i++){
-		var ico = new icon(icons[i].getAttribute('name'),icons[i].getAttribute('value'),'img/'+ icons[i].getAttribute('img')+'',icons[i].getAttribute('top'),icons[i].getAttribute('left'),icons[i].getAttribute('windowTarget')); 
+		var ico = new icon(icons[i].getAttribute('name'),icons[i].getAttribute('value'),'img/'+ icons[i].getAttribute('img')+'',icons[i].getAttribute('top'),icons[i].getAttribute('left'),icons[i].getAttribute('windowTarget'));
+	}
+}
+
+function reloadIcons(){
+	for(i in plataform_icons){
+		plataform_icons[i].style.top = plataform_icons[i].getAttribute('original_top');
+		plataform_icons[i].style.left = plataform_icons[i].getAttribute('original_left');
 	}
 }
 
@@ -47,6 +54,8 @@ function icon(name,value,img,top,left,window){
 	
 	var icone = document.createElement('DIV');
 	icone.id = 'richblocks_icon_'+name;
+	icone.setAttribute('original_top',top);
+	icone.setAttribute('original_left',left);
 	icone.style.width = '45px';
 	icone.setAttribute('window',window);
 	icone.style.height = '45px';
@@ -71,5 +80,6 @@ function icon(name,value,img,top,left,window){
 	icone.appendChild(iconeLabel);
 	
 	document.body.appendChild(icone);
+	plataform_icons.push(icone);
 	dragdrop(icone.id,icone.id);
 }
