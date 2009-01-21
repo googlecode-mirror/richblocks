@@ -36,7 +36,7 @@
 
 //Carrega o XML de configuração
 function loadAppConfiguration(){
-	xmlDoc =loadXmlDocument('conf/application.xml');    	
+	xmlDoc =loadXmlDocument('conf/application.xml');    
 	app = xmlDoc.getElementsByTagName("application");
 	if(!document.all){
 		appname =	app[0].getElementsByTagName('name')[0].textContent + " " + app[0].getElementsByTagName('version')[0].textContent + " " + app[0].getElementsByTagName('comment')[0].textContent; 
@@ -146,6 +146,32 @@ function dockMenuMove(ev){
 		document.getElementById('frame_dock_menu').style.top = parseInt(sizeWindow[1]) - 70;
 	}
 }
+
+function moveIconToDesktop(obj){
+
+}
+
+function mountTableIcons(){
+	//getSizeWindow();
+	//numColunas = screen.availWidth / 60;
+	//numLinhas = screen.availHeight / 60;
+	
+	for(var i=0;i<=7;i++){
+		tr = document.createElement('TR');
+		for(var j=0;j<17;j++){
+			td = document.createElement('TD');
+			//td.style.width = '60px';
+			td.style.paddingBottom = '55px';
+			td.style.marginLeft = '18px';
+			//td.style.height = '60px';
+			td.setAttribute('busy','false');
+			td.innerHTML ='<br>';
+			tr.appendChild(td);
+		}
+		tbodyFrameTableIcons.appendChild(tr);
+	}	
+}
+
 function displayLegend(event){
 	document.getElementById("legend").style.top = parseInt(document.getElementById('frame_dock_menu').style.top) + 20;
 	document.getElementById("legend").style.left = ov.offsetLeft;

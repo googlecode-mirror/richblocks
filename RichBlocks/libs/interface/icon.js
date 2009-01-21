@@ -81,5 +81,6 @@ function icon(name,value,img,top,left,window){
 	
 	document.body.appendChild(icone);
 	plataform_icons.push(icone);
-	dragdrop(icone.id,icone.id);
+	dragdrop(icone.id,icone.id);	
+	
 }

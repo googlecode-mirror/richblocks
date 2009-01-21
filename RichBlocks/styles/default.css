@@ -6,7 +6,7 @@
 	PLATAFORM
 *******************************/
 html{
-    overflow: -moz-scrollbars-none;
+    overflow : hidden; 
 }
 table { 
 	border-collapse: collapse;

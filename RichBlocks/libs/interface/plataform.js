@@ -49,6 +49,7 @@ var window_focus = null;
 var zIndex_blackBackground = 1000000;
 var frameInvisible = document.createElement('DIV');
 var frameProperties = document.createElement('DIV');
+var frameTableIcons = document.createElement('TABLE');
 var frameMinimizeds = document.createElement('DIV');
 var frameSysTray = document.createElement('DIV');
 var frameDockMenu = document.createElement('DIV'); 
@@ -124,6 +125,15 @@ function buildPlataform(){
 		
 	frameProperties.appendChild(img_back);
 	
+	//Tabela de Icones
+	frameTableIcons.setAttribute('border','1');
+	frameTableIcons.style.position = 'absolute';
+	frameTableIcons.style.top = '72px';
+	//frameTableIcons.style.left = '7px';
+	frameTableIcons.style.width = '100%';
+	frameTableIcons.style.height = '100%';
+		tbodyFrameTableIcons = document.createElement('TBODY');
+	frameTableIcons.appendChild(tbodyFrameTableIcons);
 	
 	// DIV onde fica o DockMenu
 	frameDockMenu.style.width = '100%';
@@ -184,6 +194,7 @@ function buildPlataform(){
 	document.body.appendChild(frameProperties);	
 	document.body.appendChild(frameMinimizeds);	
 	document.body.appendChild(frameInvisible);
+		//document.body.appendChild(frameTableIcons);
 	document.body.appendChild(frameDockMenu);
 	
 	//Detecta o Browser
@@ -204,6 +215,9 @@ function buildPlataform(){
 	buildContextMenuIcon();
 	buildContextDockMenu();
 	
+	//Tabela de Icones
+	mountTableIcons();
+	
 	// Relógio
 	clock();
 	
@@ -212,6 +226,7 @@ function buildPlataform(){
 	// Botao direito
 	document.oncontextmenu = rightButtonMenu;
 	img_back.oncontextmenu = rightButtonMenu;
+	frameTableIcons.oncontextmenu = rightButtonMenu;
 	
 	//Desabilita o evento selecionar
 	disableSelection(document.body);

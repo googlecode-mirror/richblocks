@@ -34,7 +34,22 @@
    junto com este programa, se não veja em <http://www.gnu.org/licenses/>.
 */
 
+function loadXmlDocument(arqXml) {
+	
+	var d1= new Ajax();
+	d1.url= arqXml;
+	d1.returnType = 'XML';
+	d1.onError= function (status, ajaxObj)
+				{
+					alert('<br>Erro cod: '+ status);
+					return false;
+				}
+	
+	d1.call(false,true);
+	return d1.ajax.responseXML;
+}
 
+/*
 function loadXmlDocument(arqXml) {
 	//Internet Explorer
 	try {
@@ -56,3 +71,5 @@ function loadXmlDocument(arqXml) {
 		}
 	return(null);
 }
+*/
+
