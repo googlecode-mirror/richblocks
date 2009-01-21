@@ -364,7 +364,9 @@ function buildRightButtonMenus(){
 			trSubframeMenu = document.createElement('TR');
 			trSubframeMenu.id = 'tr_frame_menu_'+i+iOpt;
 			trSubframeMenu.setAttribute('menu_reference',trSubframeMenu.id);
-			trSubframeMenu.setAttribute('xml_window_name',menu[i].getElementsByTagName('option')[iOpt].getAttribute('windowTarget'));			
+			if(menu[i].getElementsByTagName('option')[iOpt].getAttribute('windowTarget') != null){
+				trSubframeMenu.setAttribute('xml_window_name',menu[i].getElementsByTagName('option')[iOpt].getAttribute('windowTarget'));	
+			}
 			if(menu[i].getElementsByTagName('option')[iOpt].getAttribute('functionTarget') != null){
 				trSubframeMenu.setAttribute('xml_function_name',menu[i].getElementsByTagName('option')[iOpt].getAttribute('functionTarget'));	
 			}

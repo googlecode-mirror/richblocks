@@ -122,6 +122,9 @@ function buildPlataform(){
 		img_back.style.width = '100%';
 		img_back.style.height = '100%';
 		img_back.id = 'frame_properties';
+		img_back.onmousedown = function(){
+			return false;
+		}
 		
 	frameProperties.appendChild(img_back);
 	
@@ -233,6 +236,8 @@ function buildPlataform(){
 	disableSelection(frameBarTop);
 	disableSelection(frameMenu);
 	disableSelection(frameDockMenu);
+	disableSelection(frameProperties);
+	disableSelection(img_back);
 	
 	// Le o arquivo XML e armazena no array GLOBAL xml_windows
 	loadWindows();
