@@ -364,8 +364,10 @@ function buildRightButtonMenus(){
 			trSubframeMenu = document.createElement('TR');
 			trSubframeMenu.id = 'tr_frame_menu_'+i+iOpt;
 			trSubframeMenu.setAttribute('menu_reference',trSubframeMenu.id);
-			trSubframeMenu.setAttribute('xml_window_name',menu[i].getElementsByTagName('option')[iOpt].getAttribute('windowTarget'));
-			trSubframeMenu.setAttribute('xml_function_name',menu[i].getElementsByTagName('option')[iOpt].getAttribute('functionTarget'));
+			trSubframeMenu.setAttribute('xml_window_name',menu[i].getElementsByTagName('option')[iOpt].getAttribute('windowTarget'));			
+			if(menu[i].getElementsByTagName('option')[iOpt].getAttribute('functionTarget') != null){
+				trSubframeMenu.setAttribute('xml_function_name',menu[i].getElementsByTagName('option')[iOpt].getAttribute('functionTarget'));	
+			}
 			trSubframeMenu.onmouseover = function(){
 				overMenu(document.getElementById(this.getAttribute('menu_reference')).id);
 			}
@@ -483,7 +485,7 @@ function buildDockMenu(){
 	var optionsdock = xmlDoc.getElementsByTagName("dockmenu"); 	   // Variavel menu pega todas as tags <dockmenu> do arquivo XML
 	for(var i=0;i < optionsdock[0].getElementsByTagName('option').length;i++){
 		windowTarget = optionsdock[0].getElementsByTagName('option')[i].getAttribute('windowTarget');
-		dockMenu.innerHTML += '<a href="#" onclick="buildWindow(\''+windowTarget+'\')"> <img onmousemove="displayLegend(event)" oncontextmenu="contextDockMenu(event,this)" id="img_'+optionsdock[0].getElementsByTagName('option')[i].getAttribute('name')+'" src="img/'+ optionsdock[0].getElementsByTagName('option')[i].getAttribute('img')+ '" lang="'+ optionsdock[0].getElementsByTagName('option')[i].getAttribute('value') +'"</a>';
+		dockMenu.innerHTML += '<a href="#" onclick="buildWindow(\''+windowTarget+'\')"> <img window="'+windowTarget+'" onmousemove="displayLegend(event)" oncontextmenu="contextDockMenu(event,this)" id="img_'+optionsdock[0].getElementsByTagName('option')[i].getAttribute('name')+'" src="img/'+ optionsdock[0].getElementsByTagName('option')[i].getAttribute('img')+ '" lang="'+ optionsdock[0].getElementsByTagName('option')[i].getAttribute('value') +'"</a>';
 		//dragdrop(document.getElementById(optionsdock[0].getElementsByTagName('option')[i].getAttribute('name')).id,'img_'+document.getElementById(optionsdock[0].getElementsByTagName('option')[i].getAttribute('name')).id);
 		//dragdrop(document.getElementById(optionsdock[0].getElementsByTagName('option')[i].getAttribute('name').id),optionsdock[0].getElementsByTagName('option')[i].getAttribute('name').id);
 	}
@@ -604,7 +606,6 @@ function contextDockMenu(event,obj){
 			if(confirm('Tem certeza que deseja excluir este icone?')){
 				toremove = document.getElementById(obj.id);
 				toremove.parentNode.removeChild(toremove);
-				//document.removeChild(document.getElementById(obj.id));	
 			}else{
 				return false;
 			}
@@ -617,7 +618,9 @@ function contextDockMenu(event,obj){
 		}
 		trSubframeDockMenu3.onmousedown = function(){
 			outMenu(this.id);
-			alert('Mover para o Desktop');
+			toremove = document.getElementById(obj.id);
+			toremove.parentNode.removeChild(toremove);
+			moveIconToDesktop(obj);
 		}
 		
 		document.getElementById('context_dockmenu_temp').style.display = 'block';
